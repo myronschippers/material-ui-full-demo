@@ -42,6 +42,7 @@ CREATE TABLE "creatures" (
 	"name" VARCHAR(200) NOT NULL,
 	"physical_description" TEXT NOT NULL,
 	"background" TEXT,
+	"img_path" VARCHAR(300),
 	"type_id" INT REFERENCES "type"
 );
 

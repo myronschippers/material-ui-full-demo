@@ -39,3 +39,91 @@ VALUES
 	('tropical/equatorial', 'moist atmospheres with plentiful vegitation'),
 	('fridged', 'primarily cold climates with extreme chill could include ice snow or glaciers'),
 	('temperate', 'moderate climates with minimal temprature fluctuations');
+
+-- CREATURE DATA INSERTS
+INSERT INTO "creatures" ("name", "physical_description", "background", "img_path", "type_id")
+VALUES
+  (
+    'Unicorn',
+    'A horse with a single large, pointed, spiraling horn projecting from its forehead. The unicorn most often has a white coat with different varieties of color in their main and tail with cloven hooves.',
+    'The unicorn is a legendary creature that has been around since antiquity. It is an eternal fey meaning that the soul will never truly die',
+    'unicorn.jpeg',
+    7
+  ),
+  (
+    'Sphinx',
+    'Gigantic creature standing nearly 40 feet tall with the body of a lion and the face of an egyptian pharaoh. Although it has a human face it has the teeth of a pure carnavour. In some rare cases they have also been know to manifest wings but it is not the norm.',
+    'Originating in egypt the Sphinx is a very inteligen creature with an extremely long life span. In most cases the Sphinx was used as a gaurd to protext something of great value.',
+    'sphinx.jpg',
+    11
+  ),
+  (
+    'Kappa',
+    'Humanoid turtle like creature. Resembles a snapping turtle but with a head of hair in with a monk like bald spot on the top of the head. Instead of a balhead showing through however there is a small pool of water in a bowl shaped area at the top of the head They are around the size of a 10 to 14 year old child.',
+    'A type of vampirelike lecherous creature that is more intelligent than the devilish oni and less malevolent toward men. Kappa are credited with having taught the art of bonesetting to humans. If the water on the tops of their head is spilled, they lose their supernatural powers. Encounters with kappa invariably include some kind of promise. These promises are extracted from them after forcing their heads down or by tricking them into bowing low, thus spilling out the water. They have a taste for cucumbers, and a standard way of placating kappa is to throw a cucumber into the water where they live.',
+    'kappa.jpg',
+    7
+  ),
+  (
+    'Kitsune',
+    'For the most part they look exactly like a fox except that they have multiple tales. Their size however varies as they are able to change their size. They can have anywhere from one to nine tails. Although they present as a fox they can have mnay different colors for their fur such as the standard fox red-orange, white, yellow, gold, black, or silver. They can also sometimes present with markings on their head or back that look like symbols. Even though they normally look like a fox they can also change forms to a humanoid creature. Some can look almost completely human but there is usually some sine that they are indeed the kitsune be it ears, tail, nails, teeth, or eyes.',
+    'A fox spirit of Chinese and Japanese origin. Although they may have up to nine different tails this is not random. The number of tails signifies the age and strength of the kitsune. Those that reach a full nine tails are at the pinicle of their power. Kitsune are intelligent tricksters that have also been known to seduce humans. On the other hand a kitsune is extremely loyal. The specific origin of the kitsune remains a mystery and it is unclear just how old the creatures lineage may be. Kitsune possess superior intelligence, long life, and magical powers. They posses the ability to shapeshift into a humanoid form and even change into various sizes of their fox form. Kitsune usually have one of two temperaments either they are benevolent, celestial foxes associated with giving compasionate gods or they are nogitsune, mischievous or even malicious. Most kitsune are females and it is very rare to see a male kitsune.Their other abilities include the creation of illusions, possession, mind manipulation, and a special magic called "Fox Fire".',
+    'kitsune.jpg',
+    7
+  ),
+  (
+    'Niffler',
+    'Nifflers are rodent-like creatures with a long snout similar to that of a platypus bill. Their coat consists of a black fur that can whick away water and at a closer glance shines with other colors as it catches the ligh. at the front of their stomach is a conceiled pounch which has a deceptively large amount of storage space.',
+    'Native to Britain, they lived in burrows as deep as twenty feet below ground, and females produced six to eight young in a single litter. A Niffler''s pouch can hold numerous items, which is where they store their snatched treasures. The niffler is a cleptomaniach when it comes to treasures, gold in particular being a favorite of theirs. Nifflers are gentle by nature and could even be affectionate towards their owners. However, they could destroy belongings looking for sparkly objects, and for that reason it is inadvisable to keep them as house pets. It is also possible that they could turn vicious if provoked.',
+    'niffler.jpeg',
+    2
+  ),
+  (
+    'Murtlap',
+    'Murtlaps are hairless rodents about the size of a medium sized dog. The only thing they have resembling hair are fleshy tendrals that run from the top of their head down their spine. Their skin is pale in color much like a new born rat.',
+    'Murtlaps are a species of magical rat-like creatures found in the coasts of the British Isles, where they habitually feed on crustaceans as well as attacking the feet of people who accidentally step on them. They have a fleshy growth on the back which resembles a sea anemone. Said protrusion might be pickled and eaten. Those that eat the tendrals swear that it confers enhanced resistance to jinxes and curses. Overdoses may result in "unsightly purple ear hair". Murtlaps also seem have a mildly venomous bite which can cause hallucinations and potentially death.',
+    'murtlap.jpeg',
+    2
+  ),
+  (
+    'Swooping Evil',
+    'It appears similar to an extremely large butterfly but with a wolf-like skull in place of an ordinary head. When it is not flying with its spiked wings, the Swooping Evil shrinks into a green spiny cocoon. Its back and the back of its wings possess the same green spinny shell as its cacoon form. The cacoon is only about the size of a haci-sack while in its winged form it has a nearly 6 foot wing span.',
+    'It can be quite dangerous, as it is an encephalophage — it feeds on people''s brains — and its tough green skin has the ability to deflect at least some spells. It secretes venom that, when properly diluted, can be used to erase bad memories.',
+    'swooping-evil.png',
+    2
+  ),
+  (
+    'Thunderbird',
+    'A vary large falcon like bird. It sports multiple wings of varying sizes and a long almost lion like tail coming out from its tail feathers. It has anywhere from four to six wings and once full grone is the size of a bus. The feather plumage on its head froms two horn like shape coming off of its brow. Usually they are a mixture of white and gold sandy tones the sparkle ever so slightly when the light catches its form just right. In rare cases it can be a dark balck and silver coloring.',
+    'Native tribes all across North America, especially along the Pacific coast and in the Great Lakes area, have stories depicting enormous birds of prey. Some stories told that these birds were so large and powerful that when they flapped their wings, thunder was created. Lightning flashed out of their eyes, and water fell off their backs, creating rain. The tribes used thunderbirds to explain some of the things that happened naturally, such as storms and other forms of weather. The legend of Passamaquoddies, for example, describes the quest of two Native Americans in search of the source of thunder high in the mountains. Other stories said that there was a thunderbird who battled an enormous killer whale. When the two beasts fought, they destroyed much of the land, knocking down trees and causing much destruction. Although dangerous and powerful beings, thunderbirds were also seen as benevolent nature spirits, and they sometimes assisted the tribes in their search for food during periods of famine. The igneous rocks known as thunderstones are the eggs of these creatures according to some legends.',
+    'thunderbird.jpg',
+    7
+  ),
+  (
+    'Bowtruckles',
+    'The Bowtruckle was a hand-sized, insect-eating, tree dwelling magical beast with long sharp fingers (two on each hand), brown eyes, and a general appearance of a flat-faced stick figure made of bark and twigs, which served well as camouflage in its natural habitat. They were immensely difficult to spot.',
+    'The Bowtruckle could be found in western England, southern Germany, and certain Scandinavian forests. A Bowtruckle served as a tree guardian for its home tree, which was usually a tree whose wood was of wand quality (such as a Wiggentree). The twig-like fingers were well adapted for digging out wood lice in trees and can also be used as a weapon against a foe when aimed at the eyes.\n It was generally a peaceful creature, but it may attempt to gouge out an attacker''s eyes if anything threatened its tree or itself, and is adept at dodging most types of charms. In order to take leaves or wood from a Bowtruckle''s tree one would have to offer it wood lice or fairy eggs as a distraction. A group of Bowtruckles was called a branch.',
+    'bowtruckles.jpg',
+    13
+  ),
+  (
+    'Demiguise',
+    'Covered from head to tail in fur the only parts of the demiguise that reveal its skin are its hands and face. It has large round dark eyes decorated with long hari eye brows that actually trail off of its face. It has a short sheep dog like tail. It is bipedal but its hands and feet are like that of an ape except its hands have long slinder fingers.',
+    'The Demiguise is a peaceful, herbivorous magical beast that can make itself invisible and tell the future which makes it very hard to catch.\n It is found in the Far East, but only wizards and witches trained in their capture can even see them. It resembles a cross between a sloth and an ape with large, black eyes and long, silky hair.\n Demiguise pelts are highly sought after as the hair can be woven into Invisibility cloaks. Cloaks made from their hair eventually turn opaque, losing their invisibility effects as time passes.\n Demiguises have precognitive sight so that the only way to catch them is to do something completely unpredictable.\n The Demiguise''s ability to make itself invisible is used to symbolise the number zero, in the runic alphabet.',
+    'demiguise.jpg',
+    7
+  ),
+  (
+    'Ancient Bronze Dragon',
+    'It is approximately 90 feet in length from nose to tail. Decorated with bronze colored scale that have green stripping on its back almost like a patina. Walking on all fours its wings that start at the shoulders of its front legs nearly spans all the way to its hind legs. The wingspan itself is nearly double the dragon''s total length. It also has a spinny fin protrusion running down its back.',
+    'A bronze dragon lairs in coastal caves. It might salvage a wrecked ship, reconstruct it within the confines of its lair, and use it as a treasure vault or nest for its eggs. The region containing a legendary bronze dragon''s lair is warped by the dragon''s magic. The dragon can magically polymorph into a humanoid or beast, or back into its true form. This dragon has two very different breath attacks; one is its lightning breath which is like shooting a larg lightning bolt from its mouth in a relatively straight line, or the second breath attack which is a repulsion breath that is a dense energy that pushes people and object in its path away with a considerable force. When within its domain it can call down a thunderclap to a location of its choosing within its field of vision',
+    'ancient-bronze-dragon.jpg',
+    5
+  ),
+  (
+    'Stone Golem',
+    'Human like figure usually with a large almost hulk like frame. Although it is a bipedal humanoid figure it cannot be said that it looks like a human. Its rigid stone exterior is like battle tested armor. Usually a single magic sygil decorates its forehead giving it life. They are not very intelegent usually driven to a single predefined task.',
+    'These are stone humanoids summoned by magicians. Their low intelegence can make them hard to control but also garuntee that they will not turn on their creators. They are not very agile but they are extremely strong and sturdy. Often they are created as protectors.',
+    'stone-golem.jpg',
+    4
+  );
