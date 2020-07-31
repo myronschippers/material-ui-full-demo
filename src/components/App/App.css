@@ -1,0 +1,164 @@
+/* --------------------------------------------------
+CONTENT CONTAINER
+-------------------------------------------------- */
+
+.container {
+  padding: 20px;
+  margin: auto;
+  width: 980px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------
+BUTTON
+-------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ab4c19;
+  border: 1px solid #25201d;
+  border-width: 1px 1px 3px;
+  border-radius: 6px;
+  font-size: 1.07rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #cf5513;
+}
+
+/* --------------------------------------------------
+STACKABLE
+-------------------------------------------------- */
+
+.stackBlock {
+  display: block;
+}
+
+.stackBlock + .stackBlock {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #99a4ab;
+}
+
+.stackBlock_orgContent > * {
+  display: inline-block;
+}
+
+.stackBlock_orgContent > * + * {
+  margin: 0 0 0 15px;
+}
+
+/* --------------------------------------------------
+CARD
+-------------------------------------------------- */
+
+.card {
+  background-color: #fefefe;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgb(0,0,0,0.3);
+}
+
+.card-bd,
+.card-action {
+  padding: 20px 15px;
+}
+
+.card-action {
+  position: relative;
+  text-align: center;
+}
+
+.card-action:before {
+  content: "";
+  width: 70%;
+  height: 0;
+  border-bottom: 1px solid #737c81;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+}
+
+.card-action > * {
+  display: inline-block;
+}
+
+.card-action > * + * {
+  margin-left: 8px;
+}
+
+
+/* --------------------------------------------------
+FORM FIELDS
+-------------------------------------------------- */
+
+.formWrap {
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgb(0,0,0,0.3);
+}
+
+.formWrap > * {
+  display: inline-block;
+}
+
+.formWrap > * + * {
+  margin: 0 0 0 15px;
+}
+
+.field {
+  padding: 10px;
+  border: 1px solid #25201d;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: 6px;
+  color: #25201d;
+}
+
+/* --------------------------------------------------
+BLOCKS
+-------------------------------------------------- */
+
+.blocks {
+  margin: 0 0 0 -20px;
+  padding: 0;
+  width: 100%;
+  display: block;
+}
+
+.blocks > * {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 25%;
+  padding: 0 0 20px 20px;
+  vertical-align: top;
+}
+
+/* --------------------------------------------------
+CARD HEADING
+-------------------------------------------------- */
+
+.cardHdg {
+  margin: 0 0 10px;
+  padding: 5px 0 5px 5px;
+  font-size: 1.2rem;
+  color: #25201d;
+  vertical-align: middle;
+  border-left: 3px solid #cf5513;
+  background: linear-gradient(90deg, rgba(207,85,19,0.4) 0%, rgba(207,85,19,0) 100%);
+}
+
+.cardSubHdg {
+  color: #515658;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+  padding-left: 8px;
+}

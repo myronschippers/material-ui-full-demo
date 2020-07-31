@@ -1,0 +1,48 @@
+.appBar {
+  background-color: #385382;
+  color: #fefefe;
+  padding: 20px 15px 24px;
+}
+
+.appBar > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.primaryHdg {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.nav {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list > * {
+  margin: 0 0 0 10px;
+  font-size: 1.2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-list a {
+  color: #fefefe;
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  color: #96ff0e;
+  text-decoration: none;
+}

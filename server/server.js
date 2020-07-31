@@ -1,0 +1,31 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// IMPORTED ROUTES
+const creaturesRouter = require('./routes/creatures.router');
+
+//
+// MIDDLEWARE
+// ------------------------------
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//
+// ROUTES REGISTRATION
+// ------------------------------
+app.use('/api/creatures', creaturesRouter);
+
+//
+// STATIC FILES REGISTRATION
+// ------------------------------
+app.use(express.static('build'));
+
+//
+// KICK OFF SERVER
+// ------------------------------
+app.listen(PORT, () => {
+  console.log(`Listening on PORT:`, PORT);
+});
