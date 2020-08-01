@@ -15,7 +15,7 @@ VALUES
 	('Ooze', 'Gelatinous creatures that rarely have a fixed shape. They are mostly subterranean, dwelling in caves and dungeons and feeding on refuse, carrion, or creatures unlucky enough to get in their way. Black puddings and gelatinous cubes are among the most recognizable oozes.'),
 	('Plant', 'Plants in this context are vegetable creatures, not ordinary flora. Most of them are ambulatory, and some are carnivorous. The quintessential plants are the shambling mound and the treant. Fungal creatures such as the gas spore and the myconid also fall into this category.'),
 	('Undead', 'Once-living creatures brought to a horrifying state of undeath through the practice of necromantic magic or some unholy curse. Undead include walking corpses, such as vampires and zombies, as well as bodiless spirits, such as ghosts and specters.');
-	
+
 -- ATTRIBUTES INSERTS
 INSERT INTO "attributes" ("tag")
 VALUES
@@ -28,7 +28,9 @@ VALUES
 	('claw'),
 	('venomous'),
 	('acidic'),
-	('poisonous');
+	('poisonous'),
+  ('tough/sturdy'),
+  ('magical');
 
 -- HABITAT INSTERTS
 INSERT INTO "habitat" ("label", "terrain")
@@ -127,3 +129,102 @@ VALUES
     'stone-golem.jpg',
     4
   );
+
+-- CREATURE / ATTRIBUTE RELATIONAL DATA
+INSERT INTO "creatures_attributes" ("creatures_id", "attributes_id")
+VALUES
+  -- 1 Unicorn
+  (1, 1),
+  (1, 5),
+  (1, 12),
+  -- 2 Sphinx
+  (2, 3),
+  (2, 4),
+  (2, 6),
+  (2, 7),
+  -- 3 Kappa
+  (3, 2),
+  (3, 7),
+  (3, 12),
+  -- 4 Kitsune
+  (4, 2),
+  (4, 6),
+  (4, 7),
+  (4, 12),
+  -- 5 Niffler
+  (5, 2),
+  (5, 1),
+  (5, 7),
+  (5, 12),
+  -- 6 Murtlap
+  (6, 2),
+  (6, 6),
+  (6, 8),
+  -- 7 Swooping Evil
+  (7, 3),
+  (7, 4),
+  (7, 5),
+  (7, 6),
+  (7, 8),
+  -- 8 Thunderbird
+  (8, 3),
+  (8, 4),
+  (8, 7),
+  (8, 12),
+  -- 9 Bowtruckles
+  (9, 1),
+  -- 10 Demiguise
+  (10, 2),
+  (10, 1),
+  (10, 12),
+  -- 11 Ancient Bronze Dragon
+  (11, 3),
+  (11, 4),
+  (11, 12),
+  (11, 5),
+  (11, 6),
+  (11, 7),
+  -- 12 Stone Golem
+  (12, 11),
+  (12, 12);
+
+-- CREATURE / HABITAT RELATIONAL DATA
+INSERT INTO "creatures_habitat" ("creatures_id", "habitat_id")
+VALUES
+  -- 1 Unicorn
+  (1, 4),
+  (1, 6),
+  -- 2 Sphinx
+  (2, 3),
+  (2, 6),
+  -- 3 Kappa
+  (3, 1),
+  (3, 4),
+  -- 4 Kitsune
+  (4, 4),
+  (4, 5),
+  (4, 6),
+  -- 5 Niffler
+  (5, 2),
+  -- 6 Murtlap
+  (6, 2),
+  -- 7 Swooping Evil
+  (7, 4),
+  -- 8 Thunderbird
+  (8, 3),
+  (8, 6),
+  -- 9 Bowtruckles
+  (9, 1),
+  (9, 4),
+  -- 10 Demiguise
+  (10, 4),
+  (10, 6),
+  -- 11 Ancient Bronze Dragon
+  (11, 1),
+  (11, 2),
+  (11, 6),
+  -- 12 Stone Golem
+  (12, 5),
+  (12, 4),
+  (12, 6),
+  (12, 3);
