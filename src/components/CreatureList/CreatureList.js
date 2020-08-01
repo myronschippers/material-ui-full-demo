@@ -11,10 +11,11 @@ class CreatureList extends Component {
       type: 'GET_CREATURES',
     });
   }
+
   render() {
     return (
       <div className="stackBlock">
-        <h2>Available Creatures</h2>
+        <h2>Creatures</h2>
         <ul className="blocks">
           {this.props.store.creatureListReducer.map((item, index) => {
             return (

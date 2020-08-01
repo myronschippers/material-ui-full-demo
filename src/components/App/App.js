@@ -8,6 +8,7 @@ import AppLayout from '../AppLayout/AppLayout';
 import ManageInventoryPage from '../ManageInventoryPage/ManageInventoryPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import Home from '../pages/Home/Home';
+import Details from '../pages/Details/Details';
 
 class App extends React.Component {
   // state = {
@@ -43,14 +44,11 @@ class App extends React.Component {
   // }
 
   render() {
-    // toggle things
     return (
       <Router>
         <AppLayout>
-          {/* ADDITIONAL CONTENT */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/manage-inventory" component={ManageInventoryPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route exact path="/creature-details/:id" component={Details} />
         </AppLayout>
       </Router>
     );
