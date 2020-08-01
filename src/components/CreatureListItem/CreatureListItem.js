@@ -18,6 +18,7 @@ class CreatureListItem extends Component {
       <div className="card">
           <div className="card-bd">
             <h4 className="cardHdg">{creature.name}</h4>
+            <p><strong>Type:</strong> {creature.type_label}</p>
             <p className="cardSubHdg">{creature.physical_description}</p>
           </div>
           <div className="card-action">

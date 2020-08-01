@@ -5,7 +5,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "creatures";`;
+  const queryText = `SELECT creatures.*, type.label as type_label
+    FROM creatures
+    JOIN type ON type.id = creatures.type_id
+    ORDER BY name ASC;`;
 
   pool.query(queryText)
     .then((dbResponse) => {
