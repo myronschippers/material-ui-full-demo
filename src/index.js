@@ -6,14 +6,20 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './redux/reducers/_root.reducer';
+import rootSaga from './redux/sagas/_root.saga';
+
+const sagaMiddlewareInstance = createSagaMiddleware();
 
 const storeInstance = createStore(
   rootReducer,
   // TODO - add middleware for logger
-  applyMiddleware(logger)
+  applyMiddleware(logger, sagaMiddlewareInstance)
 );
+
+sagaMiddlewareInstance.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>

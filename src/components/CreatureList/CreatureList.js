@@ -6,6 +6,11 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import CreatureListItem from '../CreatureListItem/CreatureListItem';
 
 class CreatureList extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_CREATURES',
+    });
+  }
   render() {
     return (
       <div className="stackBlock">
