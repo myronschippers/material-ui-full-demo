@@ -6,7 +6,7 @@ class CreatureListItem extends Component {
 
   handleClickDetails = () => {
     // navigate to creature details page
-    this.props.history.push(`/character-details/${this.props.creature.id}`);
+    this.props.history.push(`/creature-details/${this.props.creature.id}`);
   }
 
   render() {
