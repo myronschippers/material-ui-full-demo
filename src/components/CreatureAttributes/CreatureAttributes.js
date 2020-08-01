@@ -81,6 +81,7 @@ class CreatureAttributes extends Component {
             <select
               onChange={this.handleChangeSelection}
             >
+              <option value="">Select an Attribute</option>
               {this.props.store.allAttributes.map((item, index) => {
                 return (
                   <option

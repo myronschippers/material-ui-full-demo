@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class CreatureHabitats extends Component {
   state = {
     isAdding: false,
+    newHabitatId: '',
   }
 
   componentDidMount() {
@@ -15,6 +17,40 @@ class CreatureHabitats extends Component {
       type: 'DELETE_CREATURE_HABITAT',
       payload: habitat,
     });
+  }
+
+  handleClickAddHabitat = () => {
+    this.props.dispatch({
+      type: 'SAVE_CREATURE_HABITAT',
+      payload: this.state.newHabitatId
+    });
+    this.toggleAdd();
+  }
+
+  handleChangeSelection = (event) => {
+    this.setState({
+      newHabitatId: parseInt(event.target.value)
+    });
+  }
+
+  toggleAdd = () => {
+    console.log('Toggle Add');
+    this.setState({
+      isAdding: !this.state.isAdding
+    })
+  }
+
+  seeHabitatSelectionDetails() {
+    let habitatDetails = null;
+
+    if (this.state.newHabitatId) {
+      const matchedHabitat = this.props.store.allHabitats.filter((item) => {
+        return this.state.newHabitatId === item.id;
+      });
+      habitatDetails = <p>{matchedHabitat[0].terrain}</p>;
+    }
+
+    return habitatDetails;
   }
 
   render() {
@@ -42,10 +78,49 @@ class CreatureHabitats extends Component {
               </li>
             );
           })}
+          {editable && !this.state.isAdding &&
+            <li>
+              <button
+                type="button"
+                onClick={this.toggleAdd}
+              >
+                ADD
+              </button>
+            </li>
+          }
         </ul>
+        {this.state.isAdding &&
+          <div>
+            <select
+              onChange={this.handleChangeSelection}
+            >
+              <option value="">Select a Habitat</option>
+              {this.props.store.allHabitats.map((item, index) => {
+                return (
+                  <option
+                    key={index}
+                    value={item.id}
+                  >
+                    {item.label}
+                  </option>
+                );
+              })}
+            </select>
+            {this.seeHabitatSelectionDetails()}
+            <div>
+              <button
+                type="button"
+                className="btn"
+                onClick={this.handleClickAddHabitat}
+              >
+                Add Habitat
+              </button>
+            </div>
+          </div>
+        }
       </div>
     );
   }
 }
 
-export default connect()(CreatureHabitats);
+export default connect(mapStoreToProps('allHabitats'))(CreatureHabitats);
