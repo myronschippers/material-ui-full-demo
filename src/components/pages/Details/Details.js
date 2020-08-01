@@ -10,15 +10,29 @@ class Details extends Component {
     });
   }
 
+  handleClickToEdit = (event) => {
+    if (!this.props.store.creatureDetails.id) {
+      return; // exit early if the id is not available
+    }
+
+    this.props.history.push(`/creature-edit/${this.props.store.creatureDetails.id}`);
+  }
+
   render() {
     const {
       creatureDetails
     } = this.props.store;
+
     return (
       <div>
         <div>
           <h2>Creature Details</h2>
-          <button className="btn">EDIT</button>
+          <button
+            className="btn"
+            onClick={this.handleClickToEdit}
+          >
+            EDIT
+          </button>
         </div>
         <div>
           <h3>{creatureDetails.name}</h3>
