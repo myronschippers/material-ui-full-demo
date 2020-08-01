@@ -41,14 +41,11 @@ class Edit extends Component {
 
   handleSubmitEdit = (event) => {
     event.preventDefault();
-    console.log('SUBMIT EDIT');
     const onlyEditedValues = this.assembleEditedValues();
     const allCreatureData = {
       ...this.props.store.creatureDetails,
       ...onlyEditedValues,
     };
-    console.log('creatureDetails:', this.props.store.creatureDetails);
-    console.log('onlyEditedValues:', onlyEditedValues);
 
     this.props.dispatch({
       type: 'UPDATE_CREATURE',
@@ -78,8 +75,6 @@ class Edit extends Component {
         ...this.state.form,
         [fieldKey]: enteredValue
       }
-    }, () => {
-      // console.log('form:', this.state.form);
     });
   }
 
