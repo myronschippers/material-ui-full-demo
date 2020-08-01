@@ -39,7 +39,8 @@ class CreatureAttributes extends Component {
   toggleAdd = () => {
     console.log('Toggle Add');
     this.setState({
-      isAdding: !this.state.isAdding
+      isAdding: !this.state.isAdding,
+      newAttributeId: !this.state.isAdding ? '' : this.state.newAttributeId,
     })
   }
 
