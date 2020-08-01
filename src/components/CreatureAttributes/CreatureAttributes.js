@@ -22,7 +22,10 @@ class CreatureAttributes extends Component {
   handleClickAddAttribute = () => {
     this.props.dispatch({
       type: 'SAVE_CREATURE_ATTRIBUTE',
-      payload: this.state.newAttributeId
+      payload: {
+        attributeId: this.state.newAttributeId,
+        creatureId: this.props.store.creatureDetails.id
+      }
     });
     this.toggleAdd();
   }
@@ -109,4 +112,4 @@ class CreatureAttributes extends Component {
   }
 }
 
-export default connect(mapStoreToProps('allAttributes'))(CreatureAttributes);
+export default connect(mapStoreToProps('allAttributes', 'creatureDetails'))(CreatureAttributes);

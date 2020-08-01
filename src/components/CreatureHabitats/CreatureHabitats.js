@@ -22,7 +22,10 @@ class CreatureHabitats extends Component {
   handleClickAddHabitat = () => {
     this.props.dispatch({
       type: 'SAVE_CREATURE_HABITAT',
-      payload: this.state.newHabitatId
+      payload: {
+        habitatId: this.state.newHabitatId,
+        creatureId: this.props.store.creatureDetails.id
+      }
     });
     this.toggleAdd();
   }
@@ -123,4 +126,4 @@ class CreatureHabitats extends Component {
   }
 }
 
-export default connect(mapStoreToProps('allHabitats'))(CreatureHabitats);
+export default connect(mapStoreToProps('allHabitats', 'creatureDetails'))(CreatureHabitats);
