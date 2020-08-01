@@ -71,6 +71,7 @@ class Edit extends Component {
             <input
               type="text"
               placeholder="Creature Name"
+              defaultValue={creatureDetails.name}
               onChange={this.handleChangeField('name')}
             />
           </label>
@@ -87,6 +88,7 @@ class Edit extends Component {
             <input
               type="text"
               placeholder="Enter File Name:"
+              defaultValue={creatureDetails.img_path}
               onChange={this.handleChangeField('img_path')}
             />
           </label>
@@ -94,6 +96,7 @@ class Edit extends Component {
             <div>Physical Description:</div>
             <textarea
               placeholder="What does the creature look like?"
+              defaultValue={creatureDetails.physical_description}
               onChange={this.handleChangeField('physical_description')}
             ></textarea>
           </label>
@@ -101,6 +104,7 @@ class Edit extends Component {
             <div>Background:</div>
             <textarea
               placeholder="What does the creature look like?"
+              defaultValue={creatureDetails.background}
               onChange={this.handleChangeField('background')}
             ></textarea>
           </label>
