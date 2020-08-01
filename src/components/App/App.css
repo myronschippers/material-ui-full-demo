@@ -30,6 +30,12 @@ BUTTON
   background-color: #cf5513;
 }
 
+.btn:disabled {
+  background-color: #515658;
+  border-color: #18191a;
+  cursor: not-allowed;
+}
+
 /* --------------------------------------------------
 STACKABLE
 -------------------------------------------------- */
