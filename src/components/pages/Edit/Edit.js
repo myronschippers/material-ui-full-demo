@@ -144,12 +144,14 @@ class Edit extends Component {
 
           <div className="vr vr_x2">
             <CreatureAttributes
+              editable
               attributes={creatureDetails.attributes}
             />
           </div>
 
           <div className="vr vr_x2">
             <CreatureHabitats
+              editable
               habitats={creatureDetails.habitats}
             />
           </div>
