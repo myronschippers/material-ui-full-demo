@@ -6,6 +6,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <h2>Master Bestiary</h2>
         <CreatureList />
 
         <AlertMessages />

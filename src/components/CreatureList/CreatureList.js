@@ -15,7 +15,6 @@ class CreatureList extends Component {
   render() {
     return (
       <div className="stackBlock">
-        <h2>Creatures</h2>
         <ul className="blocks">
           {this.props.store.creatureList.map((item, index) => {
             return (

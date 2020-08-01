@@ -12,7 +12,6 @@ class AppLayout extends Component {
       <div className={styles.site}>
         <div className={styles['site-hd']}>
           <Header />
-          <Link to="/checkout">Checkout</Link>
         </div>
         <div className={styles['site-bd']}>
           <div className="container">

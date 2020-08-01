@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <header className={styles.appBar}>
         <img className={styles.logo} src={logo} alt="logo" />
-        <h1 className={styles.primaryHdg}>Creature Pet Shop</h1>
+        <h1 className={styles.primaryHdg}>Fantastical Bestiary</h1>
       </header>
     );
   }
