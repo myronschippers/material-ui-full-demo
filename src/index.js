@@ -15,7 +15,7 @@ const sagaMiddlewareInstance = createSagaMiddleware();
 
 const storeInstance = createStore(
   rootReducer,
-  // TODO - add middleware for logger
+  // adding middleware for redux
   applyMiddleware(logger, sagaMiddlewareInstance)
 );
 
