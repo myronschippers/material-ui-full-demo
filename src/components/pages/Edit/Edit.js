@@ -19,14 +19,54 @@ class Edit extends Component {
     }
   }
 
+  /**
+   * Scan through the current state and extract only updated values.
+   * @returns {object}
+   */
+  assembleEditedValues() {
+    const possibleValueKeys = [
+      'name',
+      'img_path',
+      'physical_description',
+      'background',
+      'type_id',
+    ];
+    const editedValues = {};
+
+    console.log('form:', this.state.form);
+    for (let fieldKey of possibleValueKeys) {
+      const currentValue = this.state.form[fieldKey];
+      const storedValue = this.props.store.creatureDetails[fieldKey];
+
+      console.log('currentValue:', currentValue);
+      if (currentValue !== storedValue && currentValue) {
+        editedValues[fieldKey] = currentValue;
+      }
+    }
+
+    return editedValues;
+  }
+
   handleSubmitEdit = (event) => {
     event.preventDefault();
     console.log('SUBMIT EDIT');
+    const onlyEditedValues = this.assembleEditedValues();
+    const allCreatureData = {
+      ...this.props.store.creatureDetails,
+      ...onlyEditedValues,
+    };
+    console.log('creatureDetails:', this.props.store.creatureDetails);
+    console.log('onlyEditedValues:', onlyEditedValues);
+
+    this.props.dispatch({
+      type: 'UPDATE_CREATURE',
+      payload: allCreatureData,
+    });
   }
 
   handleChangeField = (fieldKey) => (event) => {
     const enteredValue = event.target.value;
-    let imageFile = this.props.store.creatureDetails;
+    let imageFile = this.props.store.creatureDetails.img_path;
 
     if (fieldKey === 'img_path'
       && (
@@ -46,6 +86,8 @@ class Edit extends Component {
         ...this.state.form,
         [fieldKey]: enteredValue
       }
+    }, () => {
+      // console.log('form:', this.state.form);
     });
   }
 
