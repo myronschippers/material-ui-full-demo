@@ -3,54 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const defaultCreatures = [
-  {
-    name: 'Dragon',
-    origin: 'China',
-  },
-  {
-    name: 'Kitsune',
-    origin: 'Japan',
-  },
-];
-// TODO - update reducer to manage creature data
-function creatureListReducer(state = defaultCreatures, action) {
-  if (action.type === 'ADD_TO_CREATURE_LIST') {
-    return [
-      ...state,
-      action.payload
-    ];
-  } else if (action.type === 'DELETE_CREATURE_FROM_LIST') {
-    return state.filter((item, index) => {
-      return action.payload !== index;
-    });
-  }
-
-  return state;
-}
-
-function checkoutReducer(state = [], action) {
-  if (action.type === 'ADD_TO_CHECKOUT') {
-    return [
-      ...state,
-      action.payload
-    ];
-  } else if (action.type === 'CLEAR_CART') {
-    return [];
-  }
-  return state;
-}
+import rootReducer from './redux/reducers/_root.reducer';
 
 const storeInstance = createStore(
-  combineReducers({
-    // add any reducers here
-    creatureListReducer,
-    checkoutReducer,
-  }),
+  rootReducer,
   // TODO - add middleware for logger
   applyMiddleware(logger)
 );
