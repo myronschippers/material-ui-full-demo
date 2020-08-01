@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import AlertMessages from '../../AlertMessages/AlertMessages';
+import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
 
 class Details extends Component {
   componentDidMount() {
@@ -63,12 +64,7 @@ class Details extends Component {
           </div>
 
           <div>
-            <h4>Attributes:</h4>
-            <ul className="blocks">
-              {creatureDetails.attributes.map((item, index) => {
-                return <li key={index}>{item}</li>
-              })}
-            </ul>
+            <CreatureAttributes attributes={creatureDetails.attributes} />
           </div>
 
           <div>

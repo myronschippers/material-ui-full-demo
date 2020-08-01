@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './AppLayout.module.css';
-import { Link } from 'react-router-dom'
 
 // CUSTOM COMPONENTS
 import Header from '../Header/Header';
