@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Details extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_CREATURE_DETAILS',
+      payload: parseInt(this.props.match.params.id),
+    });
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +18,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default connect()(Details);
