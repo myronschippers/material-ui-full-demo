@@ -66,7 +66,7 @@ class Edit extends Component {
           <h2>Edit Creature Details</h2>
         </div>
         <form onSubmit={this.handleSubmitEdit}>
-          <label>
+          <label className="vr vr_x2">
             <div>Name:</div>
             <input
               type="text"
@@ -75,7 +75,7 @@ class Edit extends Component {
               onChange={this.handleChangeField('name')}
             />
           </label>
-          <div>
+          <div className="vr">
             {editableImgPath &&
               <img
                 src={`images/${editableImgPath}`}
@@ -83,7 +83,7 @@ class Edit extends Component {
               />
             }
           </div>
-          <label>
+          <label className="vr vr_x2">
             <div>Image File Name:</div>
             <input
               type="text"
@@ -92,7 +92,7 @@ class Edit extends Component {
               onChange={this.handleChangeField('img_path')}
             />
           </label>
-          <label>
+          <label className="vr vr_x2">
             <div>Physical Description:</div>
             <textarea
               placeholder="What does the creature look like?"
@@ -100,7 +100,7 @@ class Edit extends Component {
               onChange={this.handleChangeField('physical_description')}
             ></textarea>
           </label>
-          <label>
+          <label className="vr vr_x2">
             <div>Background:</div>
             <textarea
               placeholder="What does the creature look like?"
@@ -109,7 +109,7 @@ class Edit extends Component {
             ></textarea>
           </label>
 
-          <div>
+          <div className="vr vr_x2">
             <h4>Attributes:</h4>
             <ul className="blocks">
               {creatureDetails.attributes.map((item, index) => {
@@ -118,7 +118,7 @@ class Edit extends Component {
             </ul>
           </div>
 
-          <div>
+          <div className="vr vr_x2">
             <h4>Habitats:</h4>
             <ul className="blocks">
               {creatureDetails.habitats.map((item, index) => {
