@@ -31,8 +31,9 @@ BUTTON
 }
 
 .btn:disabled {
-  background-color: #515658;
-  border-color: #18191a;
+  background-color: #afb6b9;
+  border-color: #515658;
+  color: #515658;
   cursor: not-allowed;
 }
 
