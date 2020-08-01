@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class CreatureListItem extends Component {
 
@@ -32,4 +33,4 @@ class CreatureListItem extends Component {
   }
 }
 
-export default connect()(CreatureListItem);
+export default connect()(withRouter(CreatureListItem));
