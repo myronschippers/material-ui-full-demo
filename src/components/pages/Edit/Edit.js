@@ -24,22 +24,14 @@ class Edit extends Component {
    * @returns {object}
    */
   assembleEditedValues() {
-    const possibleValueKeys = [
-      'name',
-      'img_path',
-      'physical_description',
-      'background',
-      'type_id',
-    ];
+    const possibleValueKeys = Object.keys(this.props.store.creatureDetails);
     const editedValues = {};
 
-    console.log('form:', this.state.form);
     for (let fieldKey of possibleValueKeys) {
       const currentValue = this.state.form[fieldKey];
       const storedValue = this.props.store.creatureDetails[fieldKey];
 
-      console.log('currentValue:', currentValue);
-      if (currentValue !== storedValue && currentValue) {
+      if (currentValue && currentValue !== storedValue) {
         editedValues[fieldKey] = currentValue;
       }
     }
