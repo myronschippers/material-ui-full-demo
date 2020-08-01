@@ -5,6 +5,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
+    newAttributeId: '',
   }
 
   componentDidMount() {
@@ -16,6 +17,27 @@ class CreatureAttributes extends Component {
       type: 'DELETE_CREATURE_ATTRIBUTE',
       payload: attribute,
     });
+  }
+
+  handleClickAddAttribute = () => {
+    this.props.dispatch({
+      type: 'SAVE_CREATURE_ATTRIBUTE',
+      payload: this.state.newAttributeId
+    });
+    this.toggleAdd();
+  }
+
+  handleChangeSelection = (event) => {
+    this.setState({
+      newAttributeId: parseInt(event.target.value)
+    });
+  }
+
+  toggleAdd = () => {
+    console.log('Toggle Add');
+    this.setState({
+      isAdding: !this.state.isAdding
+    })
   }
 
   render() {
@@ -43,7 +65,44 @@ class CreatureAttributes extends Component {
               </li>
             );
           })}
+          {editable && !this.state.isAdding &&
+            <li>
+              <button
+                type="button"
+                onClick={this.toggleAdd}
+              >
+                ADD
+              </button>
+            </li>
+          }
         </ul>
+        {this.state.isAdding &&
+          <div>
+            <select
+              onChange={this.handleChangeSelection}
+            >
+              {this.props.store.allAttributes.map((item, index) => {
+                return (
+                  <option
+                    key={index}
+                    value={item.id}
+                  >
+                    {item.tag}
+                  </option>
+                );
+              })}
+            </select>
+            <div>
+              <button
+                type="button"
+                className="btn"
+                onClick={this.handleClickAddAttribute}
+              >
+                Add Attribute
+              </button>
+            </div>
+          </div>
+        }
       </div>
     );
   }
