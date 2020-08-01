@@ -9,6 +9,10 @@ function* getCreatureDetails(action) {
     });
   } catch(err) {
     console.log('ERROR:', err);
+    yield dispatch({
+      type: 'ERROR_MESSAGE',
+      payload: `There was an error updating the ${action.payload.name} creature.`,
+    });
   }
 }
 

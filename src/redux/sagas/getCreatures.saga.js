@@ -10,6 +10,10 @@ function* getCreatures(action) {
     });
   } catch(err) {
     console.log('ERROR:', err);
+    yield dispatch({
+      type: 'ERROR_MESSAGE',
+      payload: `There was an error retrieving the creatures.`,
+    });
   }
 }
 

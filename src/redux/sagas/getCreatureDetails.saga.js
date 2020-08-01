@@ -10,6 +10,10 @@ function* getCreatureDetails(action) {
     });
   } catch(err) {
     console.log('ERROR:', err);
+    yield dispatch({
+      type: 'ERROR_MESSAGE',
+      payload: `There was an error getting details on the requested creature.`,
+    });
   }
 }
 

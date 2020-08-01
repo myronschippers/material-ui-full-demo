@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import AlertMessages from '../../AlertMessages/AlertMessages';
 
 class Details extends Component {
   componentDidMount() {
@@ -69,6 +70,8 @@ class Details extends Component {
             </ul>
           </div>
         </div>
+
+        <AlertMessages />
       </div>
     );
   }

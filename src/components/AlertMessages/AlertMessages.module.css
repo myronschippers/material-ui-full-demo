@@ -1,0 +1,18 @@
+.alertFrame {
+  position: fixed;
+  z-index: 1000;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.alertPanel {
+  box-sizing: border-box;
+  width: 300px;
+  max-width: 90%;
+  padding: 15px 15px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 2px 6px rgb(0, 0, 0, 0.4);
+  border-radius: 3px;
+}

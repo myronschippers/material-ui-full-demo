@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import AlertMessages from '../../AlertMessages/AlertMessages';
 
 class Edit extends Component {
   state = {
@@ -165,6 +166,8 @@ class Edit extends Component {
             </button>
           </div>
         </form>
+
+        <AlertMessages />
       </div>
     );
   }
