@@ -21,6 +21,7 @@ class Edit extends Component {
 
   handleSubmitEdit = (event) => {
     event.preventDefault();
+    console.log('SUBMIT EDIT');
   }
 
   handleChangeField = (fieldKey) => (event) => {
@@ -76,7 +77,7 @@ class Edit extends Component {
           <div>
             {editableImgPath &&
               <img
-                src={`images/${this.state.editableImgPath}`}
+                src={`images/${editableImgPath}`}
                 alt={creatureDetails.name}
               />
             }
@@ -123,7 +124,12 @@ class Edit extends Component {
           </div>
 
           <div>
-            <button className="btn">SAVE CHANGES</button>
+            <button
+              className="btn"
+              disabled={!this.state.hasEdited}
+            >
+              SAVE CHANGES
+            </button>
           </div>
         </form>
       </div>
