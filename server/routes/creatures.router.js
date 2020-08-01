@@ -42,7 +42,7 @@ router.get('/details/:id', (req, res) => {
 
   pool.query(queryText, [creatureId])
     .then((dbResponse) => {
-      res.send(dbResponse.rows);
+      res.send(dbResponse.rows[0]);
     })
     .catch((err) => {
       console.log(err);
