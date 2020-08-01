@@ -48,7 +48,7 @@ class Edit extends Component {
     };
 
     this.props.dispatch({
-      type: 'UPDATE_CREATURE',
+      type: 'UPDATE_CREATURE_DETAILS',
       payload: allCreatureData,
     });
   }
