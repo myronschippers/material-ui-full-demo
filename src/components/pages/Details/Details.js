@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
+import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
 
 class Details extends Component {
   componentDidMount() {
@@ -68,12 +69,7 @@ class Details extends Component {
           </div>
 
           <div>
-            <h4>Habitats:</h4>
-            <ul className="blocks">
-              {creatureDetails.habitats.map((item, index) => {
-                return <li key={index}>{item}</li>
-              })}
-            </ul>
+            <CreatureHabitats habitats={creatureDetails.habitats} />
           </div>
         </div>
 
