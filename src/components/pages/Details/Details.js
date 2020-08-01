@@ -11,6 +11,10 @@ class Details extends Component {
     });
   }
 
+  handleClickBACK = (event) => {
+    this.props.history.push('/');
+  }
+
   handleClickToEdit = (event) => {
     if (!this.props.store.creatureDetails.id) {
       return; // exit early if the id is not available
@@ -28,6 +32,12 @@ class Details extends Component {
       <div>
         <div>
           <h2>Creature Details</h2>
+          <button
+            className="btn"
+            onClick={this.handleClickBACK}
+          >
+            BACK TO LIST
+          </button>
           <button
             className="btn"
             onClick={this.handleClickToEdit}
