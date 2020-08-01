@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+
+// CUSTOM COMPONENTS
 import CreatureListItem from '../CreatureListItem/CreatureListItem';
 
 class CreatureList extends Component {
@@ -25,9 +28,4 @@ class CreatureList extends Component {
   }
 }
 
-const putStoreOnProps = (store) => {
-  return {
-    store: store,
-  };
-};
-export default connect(putStoreOnProps)(CreatureList);
+export default connect(mapStoreToProps('creatureListReducer'))(CreatureList);
