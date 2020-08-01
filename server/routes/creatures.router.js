@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       res.send(dbResponse.rows);
     })
     .catch((err) => {
-      console.log(err);
+      console.log('GET error:', err);
       res.status(500);
       res.send(err);
     });
@@ -45,7 +45,38 @@ router.get('/details/:id', (req, res) => {
       res.send(dbResponse.rows[0]);
     })
     .catch((err) => {
-      console.log(err);
+      console.log('GET details error:', err);
+      res.status(500);
+      res.send(err);
+    });
+});
+
+router.put('/details/:id', (req, res) => {
+  const creatureData = req.body;
+  const creatureId = req.params.id;
+  const queryText = `UPDATE "creatures"
+    SET
+      name = $2,
+      physical_description = $3,
+      background = $4,
+      img_path = $5,
+      type_id = $6
+    WHERE id = $1;`;
+
+  pool.query(queryText, [
+    creatureId,
+    creatureData.name,
+    creatureData.physical_description,
+    creatureData.background,
+    creatureData.img_path,
+    parseInt(creatureData.type_id),
+  ])
+    .then((dbResponse) => {
+      res.status(200);
+      res.send({ id: creatureId });
+    })
+    .catch((err) => {
+      console.log('PUT error:', err);
       res.status(500);
       res.send(err);
     });
@@ -55,13 +86,6 @@ router.post('/', (req, res) => {
   const creatureData = req.body;
   res.status(201);
   res.send({ id: 0 });
-});
-
-router.put('/:id', (req, res) => {
-  const creatureData = req.body;
-  const creatureId = req.params.id;
-  res.status(200);
-  res.send({ id: creatureId });
 });
 
 router.delete('/:id', (req, res) => {

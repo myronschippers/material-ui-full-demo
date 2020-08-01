@@ -1,11 +1,12 @@
 import { put as dispatch } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* getCreatureDetails(action) {
+function* updateCreature(action) {
   try {
-    const creatureResp = yield axios.post(`/api/creatures/details/${action.payload}`, action.payload);
+    yield axios.put(`/api/creatures/details/${action.payload.id}`, action.payload);
     yield dispatch({
       type: 'GET_CREATURE_DETAILS',
+      payload: action.payload.id,
     });
   } catch(err) {
     console.log('ERROR:', err);
@@ -16,4 +17,4 @@ function* getCreatureDetails(action) {
   }
 }
 
-export default getCreatureDetails;
+export default updateCreature;

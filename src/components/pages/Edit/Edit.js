@@ -52,6 +52,7 @@ class Edit extends Component {
       type: 'UPDATE_CREATURE_DETAILS',
       payload: allCreatureData,
     });
+    this.props.history.push(`/creature-details/${allCreatureData.id}`);
   }
 
   handleChangeField = (fieldKey) => (event) => {
