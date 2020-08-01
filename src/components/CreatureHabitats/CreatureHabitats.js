@@ -6,6 +6,10 @@ class CreatureHabitats extends Component {
     isAdding: false,
   }
 
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_ALL_HABITATS' });
+  }
+
   handleClickDeleteHabitat = (habitat) => (event) => {
     this.props.dispatch({
       type: 'DELETE_CREATURE_HABITAT',

@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 5000;
 // IMPORTED ROUTES
 const creaturesRouter = require('./routes/creatures.router');
 const attributesRouter = require('./routes/attributes.router');
+const habitatRouter = require('./routes/habitat.router');
 
 //
 // MIDDLEWARE
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ------------------------------
 app.use('/api/creatures', creaturesRouter);
 app.use('/api/attributes', attributesRouter);
+app.use('/api/habitat', habitatRouter);
 
 //
 // STATIC FILES REGISTRATION
