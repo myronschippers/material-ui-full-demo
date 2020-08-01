@@ -6,8 +6,8 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 // CUSTOM COMPONENTS
 import AppLayout from '../AppLayout/AppLayout';
 import ManageInventoryPage from '../ManageInventoryPage/ManageInventoryPage';
-import InventoryPage from '../InventoryPage/InventoryPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
+import Home from '../pages/Home/Home';
 
 class App extends React.Component {
   // state = {
@@ -48,8 +48,8 @@ class App extends React.Component {
       <Router>
         <AppLayout>
           {/* ADDITIONAL CONTENT */}
+          <Route exact path="/" component={Home} />
           <Route exact path="/manage-inventory" component={ManageInventoryPage} />
-          <Route exact path="/" component={InventoryPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
         </AppLayout>
       </Router>
