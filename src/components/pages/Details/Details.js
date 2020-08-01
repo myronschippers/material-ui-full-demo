@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 class Details extends Component {
   componentDidMount() {
@@ -10,12 +11,53 @@ class Details extends Component {
   }
 
   render() {
+    const {
+      creatureDetails
+    } = this.props.store;
     return (
       <div>
-        <h2>Creature Details</h2>
+        <div>
+          <h2>Creature Details</h2>
+          <button className="btn">EDIT</button>
+        </div>
+        <div>
+          <h3>{creatureDetails.name}</h3>
+          <div>
+            <div>
+              {creatureDetails.img_path &&
+                <img
+                  src={`images/${creatureDetails.img_path}`}
+                  alt={creatureDetails}
+                />
+              }
+            </div>
+            <div>
+              <p><strong>Physical Description:</strong> {creatureDetails.physical_description}</p>
+              <p><strong>Background:</strong> {creatureDetails.background}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4>Attributes:</h4>
+            <ul className="blocks">
+              {creatureDetails.attributes.map((item, index) => {
+                return <li key={index}>{item}</li>
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h4>Habitats:</h4>
+            <ul className="blocks">
+              {creatureDetails.habitats.map((item, index) => {
+                return <li key={index}>{item}</li>
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default connect()(Details);
+export default connect(mapStoreToProps('creatureDetails'))(Details);

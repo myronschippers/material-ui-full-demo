@@ -17,7 +17,7 @@ class CreatureList extends Component {
       <div className="stackBlock">
         <h2>Creatures</h2>
         <ul className="blocks">
-          {this.props.store.creatureListReducer.map((item, index) => {
+          {this.props.store.creatureList.map((item, index) => {
             return (
               <li key={index}>
                 <CreatureListItem
@@ -34,4 +34,4 @@ class CreatureList extends Component {
   }
 }
 
-export default connect(mapStoreToProps('creatureListReducer'))(CreatureList);
+export default connect(mapStoreToProps('creatureList'))(CreatureList);

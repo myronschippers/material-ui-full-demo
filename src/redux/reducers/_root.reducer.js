@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 // REDUCERS
-import creatureListReducer from './creatureList.reducer';
+import creatureList from './creatureList.reducer';
+import creatureDetails from './creatureDetails.reducer'
 
 const rootReducer = combineReducers({
   // add any reducers here
-  creatureListReducer,
+  creatureList,
+  creatureDetails,
 });
 
 export default rootReducer;
