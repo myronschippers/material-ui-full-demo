@@ -11,7 +11,7 @@ function errorReducer(state = defaultError, action) {
     case 'CLEAR_ERROR':
       return defaultError;
     default:
-      return defaultError;
+      return state;
   }
 }
 

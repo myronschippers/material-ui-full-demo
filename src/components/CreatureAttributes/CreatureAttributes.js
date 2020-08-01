@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
+  }
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_ALL_ATTRIBUTES' });
   }
 
   handleClickDeleteAttr = (attribute) => (event) => {
@@ -44,4 +49,4 @@ class CreatureAttributes extends Component {
   }
 }
 
-export default connect()(CreatureAttributes);
+export default connect(mapStoreToProps('allAttributes'))(CreatureAttributes);
