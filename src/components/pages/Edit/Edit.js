@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import AlertMessages from '../../AlertMessages/AlertMessages';
+import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
+import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
 
 class Edit extends Component {
   state = {
@@ -141,21 +143,15 @@ class Edit extends Component {
           </label>
 
           <div className="vr vr_x2">
-            <h4>Attributes:</h4>
-            <ul className="blocks">
-              {creatureDetails.attributes.map((item, index) => {
-                return <li key={index}>{item}</li>
-              })}
-            </ul>
+            <CreatureAttributes
+              attributes={creatureDetails.attributes}
+            />
           </div>
 
           <div className="vr vr_x2">
-            <h4>Habitats:</h4>
-            <ul className="blocks">
-              {creatureDetails.habitats.map((item, index) => {
-                return <li key={index}>{item}</li>
-              })}
-            </ul>
+            <CreatureHabitats
+              habitats={creatureDetails.habitats}
+            />
           </div>
 
           <div>
