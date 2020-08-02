@@ -5,12 +5,22 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // MATERIAL-UI
 import {
   Typography,
+  Paper,
+  Chip,
+  Box,
+  Button,
+  Popover,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
 } from '@material-ui/core';
 
 class CreatureHabitats extends Component {
   state = {
     isAdding: false,
     newHabitatId: '',
+    anchorEl: null,
   }
 
   componentDidMount() {
@@ -41,11 +51,12 @@ class CreatureHabitats extends Component {
     });
   }
 
-  toggleAdd = () => {
+  toggleAdd = (event) => {
     console.log('Toggle Add');
     this.setState({
       isAdding: !this.state.isAdding,
       newHabitatId: !this.state.isAdding ? '' : this.state.newHabitatId,
+      anchorEl: this.state.isAdding ? null : event.currentTarget,
     })
   }
 
@@ -56,7 +67,11 @@ class CreatureHabitats extends Component {
       const matchedHabitat = this.props.store.allHabitats.filter((item) => {
         return this.state.newHabitatId === item.id;
       });
-      habitatDetails = <p>{matchedHabitat[0].terrain}</p>;
+      habitatDetails = (
+        <Typography variant="body1" component="p" gutterBottom>
+          {matchedHabitat[0].terrain}
+        </Typography>
+      );
     }
 
     return habitatDetails;
@@ -69,71 +84,99 @@ class CreatureHabitats extends Component {
     } = this.props;
 
     return (
-      <div>
-        <Typography
-          variant="h6"
-          component="h4"
-          gutterBottom
-        >
-          Habitats:
-        </Typography>
-        <ul className="blocks">
-          {habitats.map((item, index) => {
-            return (
-              <li key={index}>
-                {item}
-                {editable &&
-                  <button
-                    type="button"
-                    onClick={this.handleClickDeleteHabitat(item)}
-                  >
-                    x
-                  </button>
-                }
-              </li>
-            );
-          })}
-          {editable && !this.state.isAdding &&
-            <li>
-              <button
+      <Paper>
+        <Box p={2}>
+          <Typography
+            variant="h6"
+            component="h4"
+            gutterBottom
+          >
+            Habitats:
+          </Typography>
+          <Box>
+            {habitats.map((item, index) => {
+              let chipProps = {
+                key: index,
+                label: item,
+              };
+
+              if (editable) {
+                chipProps.onDelete = this.handleClickDeleteHabitat(item)
+              }
+
+              return (
+                <Chip
+                  {...chipProps}
+                />
+              );
+            })}
+            {editable &&
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
                 type="button"
                 onClick={this.toggleAdd}
               >
                 ADD
-              </button>
-            </li>
-          }
-        </ul>
-        {this.state.isAdding &&
-          <div>
-            <select
-              onChange={this.handleChangeSelection}
-            >
-              <option value="">Select a Habitat</option>
-              {this.props.store.allHabitats.map((item, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={item.id}
+              </Button>
+            }
+          </Box>
+          <Popover
+            anchorEl={this.state.anchorEl}
+            onClose={this.toggleAdd}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={this.state.isAdding}
+          >
+            <Box p={1}>
+              <Box mb={2}>
+                <FormControl variant="outlined" fullWidth>
+                  <InputLabel id="habitat-select-label">
+                    Habitat:
+                  </InputLabel>
+                  <Select
+                    labelId="habitat-select-label"
+                    label="Habitat:"
+                    value={this.state.newHabitatId}
+                    onChange={this.handleChangeSelection}
                   >
-                    {item.label}
-                  </option>
-                );
-              })}
-            </select>
-            {this.seeHabitatSelectionDetails()}
-            <div>
-              <button
-                type="button"
-                className="btn"
-                onClick={this.handleClickAddHabitat}
-              >
-                Add Habitat
-              </button>
-            </div>
-          </div>
-        }
-      </div>
+                    <MenuItem value=""><em>Select a Habitat</em></MenuItem>
+                    {this.props.store.allHabitats.map((item, index) => {
+                      return (
+                        <MenuItem
+                          key={index}
+                          value={item.id}
+                        >
+                          {item.label}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Box>
+              {this.seeHabitatSelectionDetails()}
+              <div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="button"
+                  size="small"
+                  onClick={this.handleClickAddHabitat}
+                >
+                  Add Habitat
+                </Button>
+              </div>
+            </Box>
+          </Popover>
+        </Box>
+      </Paper>
     );
   }
 }
