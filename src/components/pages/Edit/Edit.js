@@ -133,76 +133,85 @@ class Edit extends Component {
           </Grid>
         </Grid>
         <form onSubmit={this.handleSubmitEdit}>
-          <label className="vr vr_x2">
-            <div>Name:</div>
-            <input
-              type="text"
-              placeholder="Creature Name"
-              defaultValue={creatureDetails.name}
-              onChange={this.handleChangeField('name')}
-            />
-          </label>
-          <TypeEditor
-            typeId={creatureDetails.type_id}
-            changeCallback={this.changeType}
-          />
-          <div className="vr">
-            {editableImgPath &&
-              <img
-                src={`images/${editableImgPath}`}
-                alt={creatureDetails.name}
+          <Grid container spacing={3}>
+            <Grid item xs={5}>
+              <div className="vr">
+                {editableImgPath &&
+                  <img
+                    src={`images/${editableImgPath}`}
+                    alt={creatureDetails.name}
+                  />
+                }
+              </div>
+              <label className="vr vr_x2">
+                <div>Image File Name:</div>
+                <input
+                  type="text"
+                  placeholder="Enter File Name:"
+                  defaultValue={creatureDetails.img_path}
+                  onChange={this.handleChangeField('img_path')}
+                />
+              </label>
+            </Grid>
+
+            <Grid item xs={7}>
+              <label className="vr vr_x2">
+                <div>Name:</div>
+                <input
+                  type="text"
+                  placeholder="Creature Name"
+                  defaultValue={creatureDetails.name}
+                  onChange={this.handleChangeField('name')}
+                />
+              </label>
+              <TypeEditor
+                typeId={creatureDetails.type_id}
+                changeCallback={this.changeType}
               />
-            }
-          </div>
-          <label className="vr vr_x2">
-            <div>Image File Name:</div>
-            <input
-              type="text"
-              placeholder="Enter File Name:"
-              defaultValue={creatureDetails.img_path}
-              onChange={this.handleChangeField('img_path')}
-            />
-          </label>
-          <label className="vr vr_x2">
-            <div>Physical Description:</div>
-            <textarea
-              placeholder="What does the creature look like?"
-              defaultValue={creatureDetails.physical_description}
-              onChange={this.handleChangeField('physical_description')}
-            ></textarea>
-          </label>
-          <label className="vr vr_x2">
-            <div>Background:</div>
-            <textarea
-              placeholder="What does the creature look like?"
-              defaultValue={creatureDetails.background}
-              onChange={this.handleChangeField('background')}
-            ></textarea>
-          </label>
+              <label className="vr vr_x2">
+                <div>Physical Description:</div>
+                <textarea
+                  placeholder="What does the creature look like?"
+                  defaultValue={creatureDetails.physical_description}
+                  onChange={this.handleChangeField('physical_description')}
+                ></textarea>
+              </label>
+              <label className="vr vr_x2">
+                <div>Background:</div>
+                <textarea
+                  placeholder="What does the creature look like?"
+                  defaultValue={creatureDetails.background}
+                  onChange={this.handleChangeField('background')}
+                ></textarea>
+              </label>
+            </Grid>
 
-          <div className="vr vr_x2">
-            <CreatureAttributes
-              editable
-              attributes={creatureDetails.attributes}
-            />
-          </div>
+            <Grid item xs={12}>
+              <div className="vr vr_x2">
+                <CreatureAttributes
+                  editable
+                  attributes={creatureDetails.attributes}
+                />
+              </div>
 
-          <div className="vr vr_x2">
-            <CreatureHabitats
-              editable
-              habitats={creatureDetails.habitats}
-            />
-          </div>
+              <div className="vr vr_x2">
+                <CreatureHabitats
+                  editable
+                  habitats={creatureDetails.habitats}
+                />
+              </div>
 
-          <div>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={!this.state.hasEdited}
-            >
-              SAVE CHANGES
-            </Button>
-          </div>
+              <div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={!this.state.hasEdited}
+                >
+                  SAVE CHANGES
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
         </form>
 
         <AlertMessages />
