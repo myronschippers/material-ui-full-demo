@@ -82,6 +82,11 @@ class Edit extends Component {
     });
   }
 
+  handleClickToBack = () => {
+    const creatureId = this.props.match.params.id;
+    this.props.history.push(`/creature-details/${creatureId}`);
+  }
+
   render() {
     const {
       creatureDetails
@@ -97,6 +102,13 @@ class Edit extends Component {
       <div>
         <div>
           <h2>Edit Creature Details</h2>
+          <button
+            type="button"
+            className="btn"
+            onClick={this.handleClickToBack}
+          >
+            BACK TO DETAILS
+          </button>
         </div>
         <form onSubmit={this.handleSubmitEdit}>
           <label className="vr vr_x2">
