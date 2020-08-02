@@ -66,10 +66,8 @@ class Details extends Component {
             </Button>
           </Grid>
         </Grid>
-        <div>
-          <h3>{creatureDetails.name}</h3>
-          <p><strong>Type:</strong> {creatureDetails.type_label}</p>
-          <div>
+        <Grid container spacing={3}>
+          <Grid item xs={5}>
             <div>
               {creatureDetails.img_path &&
                 <img
@@ -78,20 +76,30 @@ class Details extends Component {
                 />
               }
             </div>
+          </Grid>
+
+          <Grid item xs={7}>
+            <h3>{creatureDetails.name}</h3>
+            <p><strong>Type:</strong> {creatureDetails.type_label}</p>
+
             <div>
-              <p><strong>Physical Description:</strong> {creatureDetails.physical_description}</p>
-              <p><strong>Background:</strong> {creatureDetails.background}</p>
+              <div>
+                <p><strong>Physical Description:</strong> {creatureDetails.physical_description}</p>
+                <p><strong>Background:</strong> {creatureDetails.background}</p>
+              </div>
             </div>
-          </div>
+          </Grid>
 
-          <div>
-            <CreatureAttributes attributes={creatureDetails.attributes} />
-          </div>
+          <Grid item xs={12}>
+            <div>
+              <CreatureAttributes attributes={creatureDetails.attributes} />
+            </div>
 
-          <div>
-            <CreatureHabitats habitats={creatureDetails.habitats} />
-          </div>
-        </div>
+            <div>
+              <CreatureHabitats habitats={creatureDetails.habitats} />
+            </div>
+          </Grid>
+        </Grid>
 
         <AlertMessages />
       </div>
