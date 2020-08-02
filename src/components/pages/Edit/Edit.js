@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 // MATERIAL-UI
-import Button from '@material-ui/core/Button';
+import {
+  Button,
+  Grid,
+} from '@material-ui/core';
 
 // CUSTOM COMPONENT
 import AlertMessages from '../../AlertMessages/AlertMessages';
@@ -110,17 +113,25 @@ class Edit extends Component {
 
     return (
       <div>
-        <div>
-          <h2>Edit Creature Details</h2>
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            onClick={this.handleClickToBack}
-          >
-            BACK TO DETAILS
-          </Button>
-        </div>
+        <Grid
+          container
+          alignItems="center"
+          justify="space-between"
+        >
+          <Grid item>
+            <h2>Edit Creature Details</h2>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={this.handleClickToBack}
+            >
+              BACK TO DETAILS
+            </Button>
+          </Grid>
+        </Grid>
         <form onSubmit={this.handleSubmitEdit}>
           <label className="vr vr_x2">
             <div>Name:</div>

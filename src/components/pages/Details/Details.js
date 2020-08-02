@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 // MATERIAL-UI
-import Button from '@material-ui/core/Button';
+import {
+  Button,
+  Grid,
+} from '@material-ui/core';
 
 // CUSTOM COMPONENTS
 import AlertMessages from '../../AlertMessages/AlertMessages';
@@ -37,23 +40,32 @@ class Details extends Component {
 
     return (
       <div>
-        <div>
-          <h2>Creature Details</h2>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleClickBACK}
-          >
-            BACK TO LIST
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleClickToEdit}
-          >
-            EDIT
-          </Button>
-        </div>
+        <Grid
+          container
+          alignItems="center"
+          justify="space-between"
+        >
+          <Grid item>
+            <h2>Creature Details</h2>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleClickBACK}
+            >
+              BACK TO LIST
+            </Button>
+            &nbsp;
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleClickToEdit}
+            >
+              EDIT
+            </Button>
+          </Grid>
+        </Grid>
         <div>
           <h3>{creatureDetails.name}</h3>
           <p><strong>Type:</strong> {creatureDetails.type_label}</p>
