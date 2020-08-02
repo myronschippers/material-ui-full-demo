@@ -7,6 +7,7 @@ import {
   Button,
   Grid,
   Typography,
+  TextField,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENT
@@ -150,47 +151,46 @@ class Edit extends Component {
                   />
                 }
               </div>
-              <label className="vr vr_x2">
-                <div>Image File Name:</div>
-                <input
-                  type="text"
-                  placeholder="Enter File Name:"
-                  defaultValue={creatureDetails.img_path}
-                  onChange={this.handleChangeField('img_path')}
-                />
-              </label>
+
+              <TextField
+                label="Image File Name:"
+                variant="outlined"
+                fullWidth
+                defaultValue={creatureDetails.img_path}
+                onChange={this.handleChangeField('img_path')}
+              />
             </Grid>
 
             <Grid item xs={7}>
-              <label className="vr vr_x2">
-                <div>Name:</div>
-                <input
-                  type="text"
-                  placeholder="Creature Name"
-                  defaultValue={creatureDetails.name}
-                  onChange={this.handleChangeField('name')}
-                />
-              </label>
+              <TextField
+                label="Name:"
+                variant="outlined"
+                fullWidth
+                defaultValue={creatureDetails.name}
+                onChange={this.handleChangeField('name')}
+              />
               <TypeEditor
                 typeId={creatureDetails.type_id}
                 changeCallback={this.changeType}
               />
-              <label className="vr vr_x2">
-                <div>Physical Description:</div>
-                <textarea
-                  placeholder="What does the creature look like?"
-                  defaultValue={creatureDetails.physical_description}
-                  onChange={this.handleChangeField('physical_description')}
-                ></textarea>
-              </label>
-              <label className="vr vr_x2">
-                <div>Background:</div>
-                <textarea
-                  placeholder="What does the creature look like?"
-                  defaultValue={creatureDetails.background}
-                  onChange={this.handleChangeField('background')}
-                ></textarea>
-              </label>
+              <TextField
+                label="Physical Description:"
+                variant="outlined"
+                fullWidth
+                multiline
+                rows={10}
+                defaultValue={creatureDetails.physical_description}
+                onChange={this.handleChangeField('physical_description')}
+              />
+              <TextField
+                label="Background:"
+                variant="outlined"
+                fullWidth
+                multiline
+                rows={10}
+                defaultValue={creatureDetails.background}
+                onChange={this.handleChangeField('background')}
+              />
             </Grid>
 
             <Grid item xs={12}>
