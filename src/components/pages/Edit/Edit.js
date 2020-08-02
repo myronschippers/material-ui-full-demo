@@ -8,6 +8,7 @@ import {
   Grid,
   Typography,
   TextField,
+  Box,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENT
@@ -143,14 +144,14 @@ class Edit extends Component {
         <form onSubmit={this.handleSubmitEdit}>
           <Grid container spacing={3}>
             <Grid item xs={5}>
-              <div className="vr">
+              <Box mb={3}>
                 {editableImgPath &&
                   <img
                     src={`images/${editableImgPath}`}
                     alt={creatureDetails.name}
                   />
                 }
-              </div>
+              </Box>
 
               <TextField
                 label="Image File Name:"
@@ -162,35 +163,46 @@ class Edit extends Component {
             </Grid>
 
             <Grid item xs={7}>
-              <TextField
-                label="Name:"
-                variant="outlined"
-                fullWidth
-                defaultValue={creatureDetails.name}
-                onChange={this.handleChangeField('name')}
-              />
-              <TypeEditor
-                typeId={creatureDetails.type_id}
-                changeCallback={this.changeType}
-              />
-              <TextField
-                label="Physical Description:"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={10}
-                defaultValue={creatureDetails.physical_description}
-                onChange={this.handleChangeField('physical_description')}
-              />
-              <TextField
-                label="Background:"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={10}
-                defaultValue={creatureDetails.background}
-                onChange={this.handleChangeField('background')}
-              />
+              <Box mb={3}>
+                <TextField
+                  label="Name:"
+                  variant="outlined"
+                  fullWidth
+                  defaultValue={creatureDetails.name}
+                  onChange={this.handleChangeField('name')}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TypeEditor
+                  typeId={creatureDetails.type_id}
+                  changeCallback={this.changeType}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TextField
+                  label="Physical Description:"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={10}
+                  defaultValue={creatureDetails.physical_description}
+                  onChange={this.handleChangeField('physical_description')}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TextField
+                  label="Background:"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={10}
+                  defaultValue={creatureDetails.background}
+                  onChange={this.handleChangeField('background')}
+                />
+              </Box>
             </Grid>
 
             <Grid item xs={12}>

@@ -60,8 +60,7 @@ class TypeEditor extends Component {
     const definedType = this.matchTypeById(this.props.typeId);
 
     return (
-      <label className="vr vr_x2">
-        
+      <div>
         {definedType != null && !this.state.isSelecting &&
           <div onClick={this.handleClickToSelect}>
             <div>Type:</div>
@@ -94,7 +93,7 @@ class TypeEditor extends Component {
             </Select>
           </FormControl>
         }
-      </label>
+      </div>
     );
   }
 }
