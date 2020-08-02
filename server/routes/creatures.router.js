@@ -85,10 +85,46 @@ router.put('/details/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  const creatureData = req.body;
-  res.status(201);
-  res.send({ id: 0 });
+router.post('/attribute/:id', (req, res) => {
+  const creatureId = req.params.id;
+  const attributeData = req.body;
+  const queryText = `INSERT INTO "creatures_attributes" ("creatures_id", "attributes_id")
+    VALUES ($1, $2);`;
+
+  pool.query(queryText, [
+    creatureId,
+    attributeData.attributeId,
+  ])
+    .then((dbResponse) => {
+      res.status(201);
+      res.send(attributeData);
+    })
+    .catch((err) => {
+      console.log('POST attr error:', err);
+      res.status(500);
+      res.send(err);
+    });
+});
+
+router.post('/habitat/:id', (req, res) => {
+  const creatureId = req.params.id;
+  const habitatData = req.body;
+  const queryText = `INSERT INTO "creatures_habitat" ("creatures_id", "habitat_id")
+    VALUES ($1, $2);`;
+
+  pool.query(queryText, [
+    creatureId,
+    habitatData.habitatId,
+  ])
+    .then((dbResponse) => {
+      res.status(201);
+      res.send(habitatData);
+    })
+    .catch((err) => {
+      console.log('POST attr error:', err);
+      res.status(500);
+      res.send(err);
+    });
 });
 
 router.delete('/:id', (req, res) => {

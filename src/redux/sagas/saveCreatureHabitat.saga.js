@@ -4,7 +4,7 @@ import axios from 'axios';
 function* saveCreatureHabitat(action) {
   try {
     yield axios.post(
-      `/api/creatures/attribute/${action.payload.creatureId}`,
+      `/api/creatures/habitat/${action.payload.creatureId}`,
       { habitatId: action.payload.habitatId }
     );
     yield dispatch({
