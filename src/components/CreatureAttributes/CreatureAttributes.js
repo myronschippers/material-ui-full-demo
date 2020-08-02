@@ -8,12 +8,15 @@ import {
   Paper,
   Chip,
   Box,
+  Button,
+  Popover,
 } from '@material-ui/core';
 
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
     newAttributeId: '',
+    anchorEl: null,
   }
 
   componentDidMount() {
@@ -44,12 +47,13 @@ class CreatureAttributes extends Component {
     });
   }
 
-  toggleAdd = () => {
+  toggleAdd = (event) => {
     console.log('Toggle Add');
     this.setState({
       isAdding: !this.state.isAdding,
       newAttributeId: !this.state.isAdding ? '' : this.state.newAttributeId,
-    })
+      anchorEl: this.state.isAdding ? null : event.currentTarget,
+    });
   }
 
   render() {
@@ -73,7 +77,6 @@ class CreatureAttributes extends Component {
               let chipProps = {
                 key: index,
                 label: item,
-                color: 'primary',
               };
 
               if (editable) {
@@ -86,17 +89,33 @@ class CreatureAttributes extends Component {
                 />
               );
             })}
-            {editable && !this.state.isAdding &&
-              <button
+            {editable &&
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
                 type="button"
                 onClick={this.toggleAdd}
               >
                 ADD
-              </button>
+              </Button>
             }
           </Box>
-          {this.state.isAdding &&
-            <div>
+
+          <Popover
+            anchorEl={this.state.anchorEl}
+            onClose={this.toggleAdd}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={this.state.isAdding}
+          >
+            <Box p={1}>
               <select
                 onChange={this.handleChangeSelection}
               >
@@ -113,16 +132,19 @@ class CreatureAttributes extends Component {
                 })}
               </select>
               <div>
-                <button
+                <Button
+                  variant="contained"
+                  color="primary"
                   type="button"
-                  className="btn"
+                  size="small"
                   onClick={this.handleClickAddAttribute}
                 >
                   Add Attribute
-                </button>
+                </Button>
               </div>
-            </div>
-          }
+            </Box>
+          </Popover>
+
         </Box>
       </Paper>
     );
