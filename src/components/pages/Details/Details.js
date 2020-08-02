@@ -7,6 +7,7 @@ import {
   Button,
   Grid,
   Typography,
+  Box,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENTS
@@ -143,13 +144,13 @@ class Details extends Component {
           </Grid>
 
           <Grid item xs={12}>
-            <div>
+            <Box mb={3}>
               <CreatureAttributes attributes={creatureDetails.attributes} />
-            </div>
+            </Box>
 
-            <div>
+            <Box mb={3}>
               <CreatureHabitats habitats={creatureDetails.habitats} />
-            </div>
+            </Box>
           </Grid>
         </Grid>
 
