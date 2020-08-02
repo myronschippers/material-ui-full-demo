@@ -6,6 +6,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import {
   Button,
   Grid,
+  Typography,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENTS
@@ -46,7 +47,13 @@ class Details extends Component {
           justify="space-between"
         >
           <Grid item>
-            <h2>Creature Details</h2>
+            <Typography
+              variant="h4"
+              component="h2"
+              gutterBottom
+            >
+              Creature Details
+            </Typography>
           </Grid>
           <Grid item>
             <Button
@@ -79,14 +86,59 @@ class Details extends Component {
           </Grid>
 
           <Grid item xs={7}>
-            <h3>{creatureDetails.name}</h3>
-            <p><strong>Type:</strong> {creatureDetails.type_label}</p>
+            <Typography
+              variant="h5"
+              component="h3"
+              gutterBottom
+            >
+              {creatureDetails.name}
+            </Typography>
+
+            <Typography
+              variant="h6"
+              component="h4"
+              gutterBottom
+            >
+              Type:
+            </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              gutterBottom
+            >
+              {creatureDetails.type_label}
+            </Typography>
 
             <div>
-              <div>
-                <p><strong>Physical Description:</strong> {creatureDetails.physical_description}</p>
-                <p><strong>Background:</strong> {creatureDetails.background}</p>
-              </div>
+              <Typography
+                variant="h6"
+                component="h4"
+                gutterBottom
+              >
+                Physical Description:
+              </Typography>
+              <Typography
+                variant="body1"
+                component="p"
+                gutterBottom
+              >
+                {creatureDetails.physical_description}
+              </Typography>
+
+              <Typography
+                variant="h6"
+                component="h4"
+                gutterBottom
+              >
+                Background:
+              </Typography>
+              <Typography
+                variant="body1"
+                component="p"
+                gutterBottom
+              >
+                {creatureDetails.background}
+              </Typography>
             </div>
           </Grid>
 

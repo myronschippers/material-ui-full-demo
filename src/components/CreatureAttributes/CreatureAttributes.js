@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import {
+  Typography,
+} from '@material-ui/core';
+
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
@@ -52,7 +57,13 @@ class CreatureAttributes extends Component {
 
     return (
       <div>
-        <h4>Attributes:</h4>
+        <Typography
+          variant="h6"
+          component="h4"
+          gutterBottom
+        >
+          Attributes:
+        </Typography>
         <ul className="blocks">
           {attributes.map((item, index) => {
             return (
