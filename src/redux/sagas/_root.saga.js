@@ -8,6 +8,7 @@ import getAllAttributes from './getAllAttributes.saga';
 import getAllHabitats from './getAllHabitats.saga';
 import saveCreatureAttribute from './saveCreatureAttribute.saga';
 import saveCreatureHabitat from './saveCreatureHabitat.saga';
+import getAllTypes from './getAllTypes.saga';
 
 function* rootSaga() {
   yield takeLatest('GET_CREATURES', getCreatures);
@@ -17,6 +18,7 @@ function* rootSaga() {
   yield takeLatest('GET_ALL_HABITATS', getAllHabitats);
   yield takeLatest('SAVE_CREATURE_ATTRIBUTE', saveCreatureAttribute);
   yield takeLatest('SAVE_CREATURE_HABITAT', saveCreatureHabitat);
+  yield takeLatest('GET_ALL_TYPES', getAllTypes);
 }
 
 export default rootSaga;

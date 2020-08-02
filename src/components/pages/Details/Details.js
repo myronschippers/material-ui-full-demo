@@ -49,6 +49,7 @@ class Details extends Component {
         </div>
         <div>
           <h3>{creatureDetails.name}</h3>
+          <p><strong>Type:</strong> {creatureDetails.type_label}</p>
           <div>
             <div>
               {creatureDetails.img_path &&

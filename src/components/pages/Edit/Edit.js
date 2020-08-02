@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+
+// CUSTOM COMPONENT
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
 import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
+import TypeEditor from '../../TypeEditor/TypeEditor';
 
 class Edit extends Component {
   state = {
@@ -55,6 +58,10 @@ class Edit extends Component {
       payload: allCreatureData,
     });
     this.props.history.push(`/creature-details/${allCreatureData.id}`);
+  }
+
+  changeType = (newTypeId) => {
+    this.handleChangeField('type_id')({ target: { value: newTypeId } });
   }
 
   handleChangeField = (fieldKey) => (event) => {
@@ -120,6 +127,10 @@ class Edit extends Component {
               onChange={this.handleChangeField('name')}
             />
           </label>
+          <TypeEditor
+            typeId={creatureDetails.type_id}
+            changeCallback={this.changeType}
+          />
           <div className="vr">
             {editableImgPath &&
               <img
