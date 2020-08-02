@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import Button from '@material-ui/core/Button';
+
 // CUSTOM COMPONENT
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
@@ -109,13 +112,14 @@ class Edit extends Component {
       <div>
         <div>
           <h2>Edit Creature Details</h2>
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             type="button"
-            className="btn"
             onClick={this.handleClickToBack}
           >
             BACK TO DETAILS
-          </button>
+          </Button>
         </div>
         <form onSubmit={this.handleSubmitEdit}>
           <label className="vr vr_x2">
@@ -180,12 +184,13 @@ class Edit extends Component {
           </div>
 
           <div>
-            <button
-              className="btn"
+            <Button
+              variant="contained"
+              color="primary"
               disabled={!this.state.hasEdited}
             >
               SAVE CHANGES
-            </button>
+            </Button>
           </div>
         </form>
 

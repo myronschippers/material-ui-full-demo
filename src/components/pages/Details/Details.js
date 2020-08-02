@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+
+// MATERIAL-UI
+import Button from '@material-ui/core/Button';
+
+// CUSTOM COMPONENTS
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
@@ -34,18 +39,20 @@ class Details extends Component {
       <div>
         <div>
           <h2>Creature Details</h2>
-          <button
-            className="btn"
+          <Button
+            variant="contained"
+            color="primary"
             onClick={this.handleClickBACK}
           >
             BACK TO LIST
-          </button>
-          <button
-            className="btn"
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             onClick={this.handleClickToEdit}
           >
             EDIT
-          </button>
+          </Button>
         </div>
         <div>
           <h3>{creatureDetails.name}</h3>

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// MATERIAL-UI
+import {
+  Button,
+  Paper
+} from '@material-ui/core';
+
 class CreatureListItem extends Component {
 
   handleClickDetails = () => {
@@ -15,21 +21,22 @@ class CreatureListItem extends Component {
     } = this.props;
 
     return (
-      <div className="card">
+      <Paper>
           <div className="card-bd">
             <h4 className="cardHdg">{creature.name}</h4>
             <p><strong>Type:</strong> {creature.type_label}</p>
             <p className="cardSubHdg">{creature.physical_description}</p>
           </div>
           <div className="card-action">
-            <button
-              className="btn"
+            <Button
+              variant="contained"
+              color="primary"
               onClick={this.handleClickDetails}
             >
               SEE DETAILS
-            </button>
+            </Button>
           </div>
-      </div>
+      </Paper>
     );
   }
 }
