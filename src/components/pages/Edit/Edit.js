@@ -9,6 +9,7 @@ import {
   Typography,
   TextField,
   Box,
+  LinearProgress,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENT
@@ -107,6 +108,7 @@ class Edit extends Component {
     const {
       creatureDetails
     } = this.props.store;
+    const showFields = creatureDetails.id ? true : false;
 
     let editableImgPath = this.props.store.creatureDetails.img_path;
 
@@ -141,6 +143,8 @@ class Edit extends Component {
             </Button>
           </Grid>
         </Grid>
+        {!showFields && <LinearProgress />}
+        {showFields &&
         <form onSubmit={this.handleSubmitEdit}>
           <Grid container spacing={3}>
             <Grid item xs={5}>
@@ -222,6 +226,7 @@ class Edit extends Component {
 
               <div>
                 <Button
+                  type="submit"
                   variant="contained"
                   color="primary"
                   disabled={!this.state.hasEdited}
@@ -232,6 +237,7 @@ class Edit extends Component {
             </Grid>
           </Grid>
         </form>
+        }
 
         <AlertMessages />
       </div>

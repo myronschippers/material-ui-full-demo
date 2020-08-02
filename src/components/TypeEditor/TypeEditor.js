@@ -76,6 +76,7 @@ class TypeEditor extends Component {
             </InputLabel>
             <Select
               labelId="type-select-label"
+              label="Type:"
               value={this.state.selectedType}
               onChange={this.handleChangeTypeSelection}
             >
