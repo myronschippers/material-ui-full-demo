@@ -10,6 +10,10 @@ import {
   Box,
   Button,
   Popover,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
 } from '@material-ui/core';
 
 class CreatureAttributes extends Component {
@@ -116,21 +120,31 @@ class CreatureAttributes extends Component {
             open={this.state.isAdding}
           >
             <Box p={1}>
-              <select
-                onChange={this.handleChangeSelection}
-              >
-                <option value="">Select an Attribute</option>
-                {this.props.store.allAttributes.map((item, index) => {
-                  return (
-                    <option
-                      key={index}
-                      value={item.id}
-                    >
-                      {item.tag}
-                    </option>
-                  );
-                })}
-              </select>
+              <Box mb={2}>
+                <FormControl variant="outlined" fullWidth>
+                  <InputLabel id="attribute-select-label">
+                    Attribute:
+                  </InputLabel>
+                  <Select
+                    labelId="attribute-select-label"
+                    label="Attribute:"
+                    value={this.state.newAttributeId}
+                    onChange={this.handleChangeSelection}
+                  >
+                    <MenuItem value=""><em>Select an Attribute</em></MenuItem>
+                    {this.props.store.allAttributes.map((item, index) => {
+                      return (
+                        <MenuItem
+                          key={index}
+                          value={item.id}
+                        >
+                          {item.tag}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Box>
               <div>
                 <Button
                   variant="contained"
