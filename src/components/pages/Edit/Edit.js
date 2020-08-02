@@ -6,6 +6,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import {
   Button,
   Grid,
+  Typography,
 } from '@material-ui/core';
 
 // CUSTOM COMPONENT
@@ -119,7 +120,13 @@ class Edit extends Component {
           justify="space-between"
         >
           <Grid item>
-            <h2>Edit Creature Details</h2>
+            <Typography
+              variant="h4"
+              component="h2"
+              gutterBottom
+            >
+              Edit Creature Details
+            </Typography>
           </Grid>
           <Grid item>
             <Button
