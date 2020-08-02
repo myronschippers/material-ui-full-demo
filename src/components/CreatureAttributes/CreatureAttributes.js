@@ -5,6 +5,9 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // MATERIAL-UI
 import {
   Typography,
+  Paper,
+  Chip,
+  Box,
 } from '@material-ui/core';
 
 class CreatureAttributes extends Component {
@@ -56,70 +59,72 @@ class CreatureAttributes extends Component {
     } = this.props;
 
     return (
-      <div>
-        <Typography
-          variant="h6"
-          component="h4"
-          gutterBottom
-        >
-          Attributes:
-        </Typography>
-        <ul className="blocks">
-          {attributes.map((item, index) => {
-            return (
-              <li key={index}>
-                {item}
-                {editable &&
-                  <button
-                    type="button"
-                    onClick={this.handleClickDeleteAttr(item)}
-                  >
-                    x
-                  </button>
-                }
-              </li>
-            );
-          })}
-          {editable && !this.state.isAdding &&
-            <li>
+      <Paper>
+        <Box p={2}>
+          <Typography
+            variant="h6"
+            component="h4"
+            gutterBottom
+          >
+            Attributes:
+          </Typography>
+          <Box>
+            {attributes.map((item, index) => {
+              let chipProps = {
+                key: index,
+                label: item,
+                color: 'primary',
+              };
+
+              if (editable) {
+                chipProps.onDelete = this.handleClickDeleteAttr(item)
+              }
+
+              return (
+                <Chip
+                  {...chipProps}
+                />
+              );
+            })}
+            {editable && !this.state.isAdding &&
               <button
                 type="button"
                 onClick={this.toggleAdd}
               >
                 ADD
               </button>
-            </li>
-          }
-        </ul>
-        {this.state.isAdding &&
-          <div>
-            <select
-              onChange={this.handleChangeSelection}
-            >
-              <option value="">Select an Attribute</option>
-              {this.props.store.allAttributes.map((item, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={item.id}
-                  >
-                    {item.tag}
-                  </option>
-                );
-              })}
-            </select>
+            }
+          </Box>
+          {this.state.isAdding &&
             <div>
-              <button
-                type="button"
-                className="btn"
-                onClick={this.handleClickAddAttribute}
+              <select
+                onChange={this.handleChangeSelection}
               >
-                Add Attribute
-              </button>
+                <option value="">Select an Attribute</option>
+                {this.props.store.allAttributes.map((item, index) => {
+                  return (
+                    <option
+                      key={index}
+                      value={item.id}
+                    >
+                      {item.tag}
+                    </option>
+                  );
+                })}
+              </select>
+              <div>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={this.handleClickAddAttribute}
+                >
+                  Add Attribute
+                </button>
+              </div>
             </div>
-          </div>
-        }
-      </div>
+          }
+        </Box>
+      </Paper>
     );
   }
 }

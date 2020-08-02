@@ -210,19 +210,19 @@ class Edit extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <div className="vr vr_x2">
+              <Box mb={3}>
                 <CreatureAttributes
                   editable
                   attributes={creatureDetails.attributes}
                 />
-              </div>
+              </Box>
 
-              <div className="vr vr_x2">
+              <Box mb={3}>
                 <CreatureHabitats
                   editable
                   habitats={creatureDetails.habitats}
                 />
-              </div>
+              </Box>
 
               <div>
                 <Button
