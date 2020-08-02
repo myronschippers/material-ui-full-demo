@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 // MATERIAL-UI
 import {
   Button,
-  Paper
+  Paper,
+  Typography,
 } from '@material-ui/core';
 
 class CreatureListItem extends Component {
@@ -23,9 +24,27 @@ class CreatureListItem extends Component {
     return (
       <Paper>
           <div className="card-bd">
-            <h4 className="cardHdg">{creature.name}</h4>
-            <p><strong>Type:</strong> {creature.type_label}</p>
-            <p className="cardSubHdg">{creature.physical_description}</p>
+            <Typography
+              variant="h6"
+              component="h4"
+              gutterBottom
+            >
+              {creature.name}
+            </Typography>
+
+            <Typography
+              variant="body1"
+              component="div"
+              gutterBottom
+            >
+              <strong>Type:</strong> {creature.type_label}
+            </Typography>
+            <Typography
+              variant="body2"
+              component="p"
+            >
+              {creature.physical_description}
+            </Typography>
           </div>
           <div className="card-action">
             <Button
