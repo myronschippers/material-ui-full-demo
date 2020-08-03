@@ -127,11 +127,52 @@ router.post('/habitat/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  const creatureData = req.body;
+/**
+ * Remove relationship between creature and attribute.
+ */
+router.delete('/attribute/:id', (req, res) => {
+  const attributeData = req.body;
   const creatureId = req.params.id;
-  res.status(200);
-  res.send({ id: creatureId });
+  const queryText = `DELETE FROM "creatures_attributes"
+    WHERE creatures_id = $1 AND attributes_id = $2;`
+
+  pool.query(queryText, [
+    creatureId,
+    attributeData.id,
+  ])
+    .then((dbResp) => {
+      res.status(200);
+      res.send(attributeData);
+    })
+    .catch((err) => {
+      console.log('DELETE attr error:', err);
+      res.status(500);
+      res.send(err);
+    });
+});
+
+/**
+ * Remove relationship between creature and habitat.
+ */
+router.delete('/habitat/:id', (req, res) => {
+  const habitatData = req.body;
+  const creatureId = req.params.id;
+  const queryText = `DELETE FROM "creatures_habitat"
+    WHERE creatures_id = $1 AND habitat_id = $2;`
+
+  pool.query(queryText, [
+    creatureId,
+    habitatData.id,
+  ])
+    .then((dbResp) => {
+      res.status(200);
+      res.send(habitatData);
+    })
+    .catch((err) => {
+      console.log('DELETE habitat error:', err);
+      res.status(500);
+      res.send(err);
+    });
 });
 
 module.exports = router;
