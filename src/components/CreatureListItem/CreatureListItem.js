@@ -7,6 +7,11 @@ import {
   Button,
   Paper,
   Typography,
+  Avatar,
+  Card,
+  CardHeader,
+  CardActionArea,
+  CardContent,
 } from '@material-ui/core';
 
 class CreatureListItem extends Component {
@@ -22,40 +27,33 @@ class CreatureListItem extends Component {
     } = this.props;
 
     return (
-      <Paper>
-          <div className="card-bd">
-            <Typography
-              variant="h6"
-              component="h4"
-              gutterBottom
-            >
-              {creature.name}
-            </Typography>
-
-            <Typography
-              variant="body1"
-              component="div"
-              gutterBottom
-            >
-              <strong>Type:</strong> {creature.type_label}
-            </Typography>
+      <Card>
+        <CardActionArea onClick={this.handleClickDetails}>
+          <CardHeader
+            avatar={
+              <Avatar alt={creature.name} src={`images/${creature.img_path}`} />
+            }
+            title={creature.name}
+            titleTypographyProps={{
+              variant: "h6",
+              component: "h3",
+            }}
+            subheader={`Type: ${creature.type_label}`}
+            subheaderTypographyProps={{
+              variant: "subtitle1",
+              component: "span",
+            }}
+          />
+          <CardContent>
             <Typography
               variant="body2"
               component="p"
             >
               {creature.physical_description}
             </Typography>
-          </div>
-          <div className="card-action">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleClickDetails}
-            >
-              SEE DETAILS
-            </Button>
-          </div>
-      </Paper>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     );
   }
 }
