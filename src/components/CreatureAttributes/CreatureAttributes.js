@@ -58,6 +58,10 @@ class CreatureAttributes extends Component {
       attributes,
       editable,
     } = this.props;
+    const selectableOptions = this.props.store.allAttributes.filter((attrOpt, index) => {
+      let matchWithSaved = attributes.filter(attrSaved => attrOpt.tag === attrSaved);
+      return matchWithSaved.length === 0;
+    });
 
     return (
       <div>
@@ -95,7 +99,7 @@ class CreatureAttributes extends Component {
               onChange={this.handleChangeSelection}
             >
               <option value="">Select an Attribute</option>
-              {this.props.store.allAttributes.map((item, index) => {
+              {selectableOptions.map((item, index) => {
                 return (
                   <option
                     key={index}

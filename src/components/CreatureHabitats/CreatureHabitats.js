@@ -71,6 +71,10 @@ class CreatureHabitats extends Component {
       habitats,
       editable,
     } = this.props;
+    const selectableOptions = this.props.store.allHabitats.filter((habitatOpt, index) => {
+      let matchWithSaved = habitats.filter(habitatSaved => habitatOpt.label === habitatSaved);
+      return matchWithSaved.length === 0;
+    });
 
     return (
       <div>
@@ -108,7 +112,7 @@ class CreatureHabitats extends Component {
               onChange={this.handleChangeSelection}
             >
               <option value="">Select a Habitat</option>
-              {this.props.store.allHabitats.map((item, index) => {
+              {selectableOptions.map((item, index) => {
                 return (
                   <option
                     key={index}
