@@ -130,19 +130,20 @@ router.post('/habitat/:id', (req, res) => {
 /**
  * Remove relationship between creature and attribute.
  */
-router.delete('/attribute/:id', (req, res) => {
-  const attributeData = req.body;
-  const creatureId = req.params.id;
+router.delete('/:creatureId/attribute/:attributeId', (req, res) => {
+  const attributeId = req.params.attributeId;
+  const creatureId = req.params.creatureId;
   const queryText = `DELETE FROM "creatures_attributes"
-    WHERE creatures_id = $1 AND attributes_id = $2;`
+    WHERE creatures_id = $1 AND attributes_id = $2
+    RETURNING id;`;
 
   pool.query(queryText, [
     creatureId,
-    attributeData.id,
+    attributeId,
   ])
     .then((dbResp) => {
       res.status(200);
-      res.send(attributeData);
+      res.send(dbResp.rows[0]);
     })
     .catch((err) => {
       console.log('DELETE attr error:', err);
@@ -154,19 +155,20 @@ router.delete('/attribute/:id', (req, res) => {
 /**
  * Remove relationship between creature and habitat.
  */
-router.delete('/habitat/:id', (req, res) => {
-  const habitatData = req.body;
-  const creatureId = req.params.id;
+router.delete('/:creatureId/habitat/:habitatId', (req, res) => {
+  const habitatId = req.params.habitatId;
+  const creatureId = req.params.creatureId;
   const queryText = `DELETE FROM "creatures_habitat"
-    WHERE creatures_id = $1 AND habitat_id = $2;`
+    WHERE creatures_id = $1 AND habitat_id = $2
+    RETURNING id;`;
 
   pool.query(queryText, [
     creatureId,
-    habitatData.id,
+    habitatId,
   ])
     .then((dbResp) => {
       res.status(200);
-      res.send(habitatData);
+      res.send(dbResp.rows[0]);
     })
     .catch((err) => {
       console.log('DELETE habitat error:', err);
