@@ -30,8 +30,17 @@ class CreatureAttributes extends Component {
   handleClickDeleteAttr = (attribute) => (event) => {
     this.props.dispatch({
       type: 'DELETE_CREATURE_ATTRIBUTE',
-      payload: attribute,
+      payload: {
+        attribute: this.matchAvailableAttributes(attribute),
+        creatureId: this.props.store.creatureDetails.id,
+      },
     });
+  }
+
+  matchAvailableAttributes(attributeTag) {
+    const allAttributes = this.props.store.allAttributes;
+    const matchedAttributes = allAttributes.filter(item => attributeTag === item.tag);
+    return matchedAttributes[0];
   }
 
   handleClickAddAttribute = () => {
@@ -65,6 +74,10 @@ class CreatureAttributes extends Component {
       attributes,
       editable,
     } = this.props;
+    const selectableOptions = this.props.store.allAttributes.filter((attrOpt, index) => {
+      let matchWithSaved = attributes.filter(attrSaved => attrOpt.tag === attrSaved);
+      return matchWithSaved.length === 0;
+    });
 
     return (
       <Paper>
@@ -132,7 +145,7 @@ class CreatureAttributes extends Component {
                     onChange={this.handleChangeSelection}
                   >
                     <MenuItem value=""><em>Select an Attribute</em></MenuItem>
-                    {this.props.store.allAttributes.map((item, index) => {
+                    {selectableOptions.map((item, index) => {
                       return (
                         <MenuItem
                           key={index}
