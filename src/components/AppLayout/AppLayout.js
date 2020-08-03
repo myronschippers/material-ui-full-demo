@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styles from './AppLayout.module.css';
 
+// MATERIAL-UI
+import { Container } from '@material-ui/core';
+
 // CUSTOM COMPONENTS
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -13,9 +16,9 @@ class AppLayout extends Component {
           <Header />
         </div>
         <div className={styles['site-bd']}>
-          <div className="container">
+          <Container>
             {this.props.children}
-          </div>
+          </Container>
         </div>
         <div className={styles['site-ft']}>
           <Footer />

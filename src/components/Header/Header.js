@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import styles from './Header.module.css';
+
+// MATERIAL-UI
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Avatar,
+} from '@material-ui/core';
+import {
+  Pets
+} from '@material-ui/icons';
+
+// CUSTOM COMPONENT
+import OpenBookIcon from './OpenBookIcon';
 
 class Header extends Component {
   render() {
     return (
-      <header className={styles.appBar}>
-        <img className={styles.logo} src={logo} alt="logo" />
-        <h1 className={styles.primaryHdg}>Fantastical Bestiary</h1>
-      </header>
+      <Box mb={4}>
+        <AppBar position="static">
+          <Toolbar>
+            <Box mr={2}>
+              <OpenBookIcon style={{ fontSize: 40 }} />
+            </Box>
+            <Box mr={1}>
+              <Typography variant="h5" color="inherit">Fantastical Bestiary</Typography>
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
     );
   }
 }
