@@ -127,11 +127,54 @@ router.post('/habitat/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  const creatureData = req.body;
-  const creatureId = req.params.id;
-  res.status(200);
-  res.send({ id: creatureId });
+/**
+ * Remove relationship between creature and attribute.
+ */
+router.delete('/:creatureId/attribute/:attributeId', (req, res) => {
+  const attributeId = req.params.attributeId;
+  const creatureId = req.params.creatureId;
+  const queryText = `DELETE FROM "creatures_attributes"
+    WHERE creatures_id = $1 AND attributes_id = $2
+    RETURNING id;`;
+
+  pool.query(queryText, [
+    creatureId,
+    attributeId,
+  ])
+    .then((dbResp) => {
+      res.status(200);
+      res.send(dbResp.rows[0]);
+    })
+    .catch((err) => {
+      console.log('DELETE attr error:', err);
+      res.status(500);
+      res.send(err);
+    });
+});
+
+/**
+ * Remove relationship between creature and habitat.
+ */
+router.delete('/:creatureId/habitat/:habitatId', (req, res) => {
+  const habitatId = req.params.habitatId;
+  const creatureId = req.params.creatureId;
+  const queryText = `DELETE FROM "creatures_habitat"
+    WHERE creatures_id = $1 AND habitat_id = $2
+    RETURNING id;`;
+
+  pool.query(queryText, [
+    creatureId,
+    habitatId,
+  ])
+    .then((dbResp) => {
+      res.status(200);
+      res.send(dbResp.rows[0]);
+    })
+    .catch((err) => {
+      console.log('DELETE habitat error:', err);
+      res.status(500);
+      res.send(err);
+    });
 });
 
 module.exports = router;
