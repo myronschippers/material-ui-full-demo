@@ -9,6 +9,8 @@ import getAllHabitats from './getAllHabitats.saga';
 import saveCreatureAttribute from './saveCreatureAttribute.saga';
 import saveCreatureHabitat from './saveCreatureHabitat.saga';
 import getAllTypes from './getAllTypes.saga';
+import deleteCreatureAttribute from './deleteCreatureAttribute.saga';
+import deleteCreatureHabitat from './deleteCreatureHabitat.saga';
 
 function* rootSaga() {
   yield takeLatest('GET_CREATURES', getCreatures);
@@ -19,6 +21,8 @@ function* rootSaga() {
   yield takeLatest('SAVE_CREATURE_ATTRIBUTE', saveCreatureAttribute);
   yield takeLatest('SAVE_CREATURE_HABITAT', saveCreatureHabitat);
   yield takeLatest('GET_ALL_TYPES', getAllTypes);
+  yield takeLatest('DELETE_CREATURE_ATTRIBUTE', deleteCreatureAttribute);
+  yield takeLatest('DELETE_CREATURE_HABITAT', deleteCreatureHabitat);
 }
 
 export default rootSaga;

@@ -17,19 +17,19 @@ This repository is meant to act as a demonstration of how to customize an applic
   |  |
   |  •
   |  | \
-  |  |  • - feature-setup
+  |  |  • - feature-mui-setup
   |  | /
   |  •
   |  | \
-  |  |  • - feature-custom-theme
+  |  |  • - feature-mui-theme
   |  | /
   |  •
   |  | \
-  |  |  • - feature-component-styles
+  |  |  • - feature-mui-styles
   |  | /
   |  •
   |  | \
-  |  |  • - feature-core-properties
+  |  |  • - feature-mui-core-properties
   |  | /
   |  •
   |  |
@@ -40,11 +40,13 @@ This repository is meant to act as a demonstration of how to customize an applic
   - fully functional application with no material-ui
 1. `develop`
   - completely customized application leveraging material-ui, core behavior remains the same
-1. `feature-custom-theme`
+1. `feature-mui-setup`
+  - bringing in material-ui dependencies and using the available components
+1. `feature-mui-theme`
   - shows how to setup and configure material-ui theme settings
-1. `feature-component-styles`
+1. `feature-mui-styles`
   - demonstrates how to add custom styling to individual material-ui components
-1. `feature-core-properties`
+1. `feature-mui-core-properties`
   - demo of how to override core component properties/styling at a global level
 
 
