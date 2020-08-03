@@ -6,11 +6,7 @@ import {
   Toolbar,
   Typography,
   Box,
-  Avatar,
 } from '@material-ui/core';
-import {
-  Pets
-} from '@material-ui/icons';
 
 // CUSTOM COMPONENT
 import OpenBookIcon from './OpenBookIcon';

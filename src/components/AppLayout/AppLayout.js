@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './AppLayout.module.css';
 
 // MATERIAL-UI
-import { Container } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 
 // CUSTOM COMPONENTS
 import Header from '../Header/Header';
@@ -16,8 +16,10 @@ class AppLayout extends Component {
           <Header />
         </div>
         <div className={styles['site-bd']}>
-          <Container>
-            {this.props.children}
+          <Container >
+            <Box pb={6}>
+              {this.props.children}
+            </Box>
           </Container>
         </div>
         <div className={styles['site-ft']}>
