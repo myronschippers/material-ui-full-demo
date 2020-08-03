@@ -15,8 +15,17 @@ class CreatureAttributes extends Component {
   handleClickDeleteAttr = (attribute) => (event) => {
     this.props.dispatch({
       type: 'DELETE_CREATURE_ATTRIBUTE',
-      payload: attribute,
+      payload: {
+        attribute: this.matchAvailableAttributes(attribute),
+        creatureId: this.props.store.creatureDetails.id,
+      },
     });
+  }
+
+  matchAvailableAttributes(attributeTag) {
+    const allAttributes = this.props.store.allAttributes;
+    const matchedAttributes = allAttributes.filter(item => attributeTag === item.tag);
+    return matchedAttributes[0];
   }
 
   handleClickAddAttribute = () => {

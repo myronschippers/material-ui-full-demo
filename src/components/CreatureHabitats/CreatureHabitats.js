@@ -15,8 +15,17 @@ class CreatureHabitats extends Component {
   handleClickDeleteHabitat = (habitat) => (event) => {
     this.props.dispatch({
       type: 'DELETE_CREATURE_HABITAT',
-      payload: habitat,
+      payload: {
+        habitat: this.matchAvailableHabitats(habitat),
+        creatureId: this.props.store.creatureDetails.id,
+      },
     });
+  }
+
+  matchAvailableHabitats(habitatLabel) {
+    const allHabitats = this.props.store.allHabitats;
+    const matchedHabitats = allHabitats.filter(item => habitatLabel === item.label);
+    return matchedHabitats[0];
   }
 
   handleClickAddHabitat = () => {
