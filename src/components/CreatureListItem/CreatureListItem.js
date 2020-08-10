@@ -13,6 +13,27 @@ import {
   CardActionArea,
   CardContent,
 } from '@material-ui/core';
+import {
+  withStyles,
+  createStyles,
+} from '@material-ui/core/styles';
+
+const muiStyles = (theme) => createStyles({
+  // styles for main heading
+  mainHdg: {
+    color: theme.palette.common.white,
+  },
+  // styles for sub heading
+  subHdg: {
+    color: theme.palette.common.white,
+  },
+  // styles for description content
+  desc: {
+    height: '90px',
+    overflowY: 'auto',
+    margin: `0 0 ${theme.spacing(3)}px`,
+  },
+});
 
 class CreatureListItem extends Component {
 
@@ -37,14 +58,16 @@ class CreatureListItem extends Component {
             titleTypographyProps={{
               variant: "h6",
               component: "h3",
+              className: this.props.classes.mainHdg,
             }}
             subheader={`Type: ${creature.type_label}`}
             subheaderTypographyProps={{
               variant: "subtitle1",
               component: "span",
+              className: this.props.classes.subHdg,
             }}
           />
-          <CardContent>
+          <CardContent className={this.props.classes.desc}>
             <Typography
               variant="body2"
               component="p"
@@ -58,4 +81,6 @@ class CreatureListItem extends Component {
   }
 }
 
-export default connect()(withRouter(CreatureListItem));
+export default connect()(withRouter(
+  withStyles(muiStyles)(CreatureListItem)
+));
