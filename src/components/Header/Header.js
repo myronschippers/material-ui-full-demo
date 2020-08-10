@@ -15,7 +15,7 @@ class Header extends Component {
   render() {
     return (
       <Box mb={4}>
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <Box mr={2}>
               <OpenBookIcon style={{ fontSize: 40 }} />

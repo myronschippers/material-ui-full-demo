@@ -67,7 +67,7 @@ class Details extends Component {
             &nbsp;
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               onClick={this.handleClickToEdit}
             >
               EDIT
