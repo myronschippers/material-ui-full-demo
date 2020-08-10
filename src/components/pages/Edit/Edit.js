@@ -28,6 +28,13 @@ const muiStyles = (theme) => createStyles({
     border: `2px solid ${theme.palette.common.black}`,
     backgroundColor: theme.palette.info.main,
   },
+  imgEditBox: {
+    width: '85%',
+    padding: `${theme.spacing(2)}px`,
+    margin: `${theme.spacing(3)}px auto -60px`,
+    border: `2px solid ${theme.palette.common.black}`,
+    backgroundColor: theme.palette.common.white,
+  }
 });
 
 class Edit extends Component {
@@ -160,20 +167,22 @@ class Edit extends Component {
         <form onSubmit={this.handleSubmitEdit}>
           <Grid container spacing={3}>
             <Grid item xs={5}>
-              <Box mb={3} p={3} className={this.props.classes.imgBlock}>
+              <Box mb={7} p={3} className={this.props.classes.imgBlock}>
                 {editableImgPath &&
                   <img
                     src={`images/${editableImgPath}`}
                     alt={creatureDetails.name}
                   />
                 }
-                <TextField
-                  label="Image File Name:"
-                  variant="outlined"
-                  fullWidth
-                  defaultValue={creatureDetails.img_path}
-                  onChange={this.handleChangeField('img_path')}
-                />
+                <Box className={this.props.classes.imgEditBox}>
+                  <TextField
+                    label="Image File Name:"
+                    variant="outlined"
+                    fullWidth
+                    defaultValue={creatureDetails.img_path}
+                    onChange={this.handleChangeField('img_path')}
+                  />
+                </Box>
               </Box>
 
             </Grid>
