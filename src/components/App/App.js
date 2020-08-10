@@ -50,6 +50,16 @@ const customTheme = createMuiTheme({
     // warning: lime,
     info: { main: '#FE7942' },
     // success: green,
+  },
+  typography: {
+    h1: { color: '#BF4904', fontWeight: 'bold' },
+    h2: { color: '#BF4904', fontWeight: 'bold' },
+    h3: { color: '#BF4904', fontWeight: 'bold' },
+    h4: { color: '#BF4904', fontWeight: 'bold' },
+    h5: { color: '#BF4904', fontWeight: 'bold' },
+    h6: { color: '#BF4904', fontWeight: 'bold' },
+    body1: { color: '#333333' },
+    body2: { color: '#333333' },
   }
 });
 
