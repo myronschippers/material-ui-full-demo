@@ -48,7 +48,22 @@ const customTheme = createMuiTheme({
     h6: { color: '#BF4904', fontWeight: 'bold' },
     body1: { color: '#333333' },
     body2: { color: '#333333' },
-  }
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: '0',
+        fontWeight: 'bold',
+      },
+      contained: {
+        border: '2px solid #333333',
+        boxShadow: '3px 3px 0 #014F56',
+        '&:hover': {
+          boxShadow: '1px 1px 0 #014F56',
+        }
+      }
+    }
+  },
 });
 
 class App extends React.Component {
