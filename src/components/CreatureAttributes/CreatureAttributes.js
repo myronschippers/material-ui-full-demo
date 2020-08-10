@@ -94,6 +94,7 @@ class CreatureAttributes extends Component {
               let chipProps = {
                 key: index,
                 label: item,
+                color: 'secondary',
               };
 
               if (editable) {

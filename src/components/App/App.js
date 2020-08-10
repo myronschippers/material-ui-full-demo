@@ -62,7 +62,25 @@ const customTheme = createMuiTheme({
           boxShadow: '1px 1px 0 #014F56',
         }
       }
-    }
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: '#4EA09E',
+        border: '2px solid #333333',
+      },
+      rounded: {
+        borderRadius: '0',
+      },
+      elevation1: {
+        boxShadow: '4px 3px 0 #014F56',
+      },
+      elevation2: {
+        boxShadow: '4px 4px 0 #014F56',
+      },
+      elevation3: {
+        boxShadow: '4px 5px 0 #014F56',
+      },
+    },
   },
 });
 

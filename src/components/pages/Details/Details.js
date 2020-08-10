@@ -66,8 +66,8 @@ class Details extends Component {
             </Button>
             &nbsp;
             <Button
-              variant="outlined"
-              color="secondary"
+              variant="contained"
+              color="primary"
               onClick={this.handleClickToEdit}
             >
               EDIT
