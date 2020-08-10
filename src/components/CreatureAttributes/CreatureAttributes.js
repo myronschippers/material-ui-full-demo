@@ -16,6 +16,17 @@ import {
   MenuItem,
   Grid,
 } from '@material-ui/core';
+import {
+  withStyles,
+  createStyles,
+} from '@material-ui/core/styles';
+
+const muiStyles = (theme) => createStyles({
+  blockHdg: {
+    color: theme.palette.primary.main,
+    textShadow: `0 2px 1px ${theme.palette.common.black}`,
+  }
+});
 
 class CreatureAttributes extends Component {
   state = {
@@ -87,6 +98,7 @@ class CreatureAttributes extends Component {
             variant="h6"
             component="h4"
             gutterBottom
+            className={this.props.classes.blockHdg}
           >
             Attributes:
           </Typography>
@@ -185,4 +197,6 @@ class CreatureAttributes extends Component {
   }
 }
 
-export default connect(mapStoreToProps('allAttributes', 'creatureDetails'))(CreatureAttributes);
+export default connect(mapStoreToProps('allAttributes', 'creatureDetails'))(
+  withStyles(muiStyles)(CreatureAttributes)
+);
