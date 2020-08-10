@@ -25,11 +25,11 @@ This repository is meant to act as a demonstration of how to customize an applic
   |  | /
   |  •
   |  | \
-  |  |  • - feature-mui-styles
+  |  |  • - feature-mui-overrides
   |  | /
   |  •
   |  | \
-  |  |  • - feature-mui-core-properties
+  |  |  • - feature-mui-styles
   |  | /
   |  •
   |  |
@@ -44,10 +44,10 @@ This repository is meant to act as a demonstration of how to customize an applic
   - bringing in material-ui dependencies and using the available components
 1. `feature-mui-theme`
   - shows how to setup and configure material-ui theme settings
+1. `feature-mui-overrides`
+  - demo of how to override core component properties/styling at a global level
 1. `feature-mui-styles`
   - demonstrates how to add custom styling to individual material-ui components
-1. `feature-mui-core-properties`
-  - demo of how to override core component properties/styling at a global level
 
 
 ## Prerequisites
