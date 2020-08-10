@@ -97,6 +97,14 @@ const customTheme = createMuiTheme({
         width: '90%',
         fontWeight: 'bold',
       }
+    },
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: '0',
+      },
+      notchedOutline: {
+        borderColor: '#333333',
+      },
     }
   },
 });
