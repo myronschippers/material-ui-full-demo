@@ -14,6 +14,7 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  Grid,
 } from '@material-ui/core';
 
 class CreatureHabitats extends Component {
@@ -107,34 +108,40 @@ class CreatureHabitats extends Component {
             Habitats:
           </Typography>
           <Box>
-            {habitats.map((item, index) => {
-              let chipProps = {
-                key: index,
-                label: item,
-                color: 'secondary',
-              };
+            <Grid container spacing={1}>
+              {habitats.map((item, index) => {
+                let chipProps = {
+                  key: index,
+                  label: item,
+                  color: 'secondary',
+                };
 
-              if (editable) {
-                chipProps.onDelete = this.handleClickDeleteHabitat(item)
+                if (editable) {
+                  chipProps.onDelete = this.handleClickDeleteHabitat(item)
+                }
+
+                return (
+                  <Grid item key={index}>
+                    <Chip
+                      {...chipProps}
+                    />
+                  </Grid>
+                );
+              })}
+              {editable &&
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    type="button"
+                    onClick={this.toggleAdd}
+                  >
+                    ADD
+                  </Button>
+                </Grid>
               }
-
-              return (
-                <Chip
-                  {...chipProps}
-                />
-              );
-            })}
-            {editable &&
-              <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                type="button"
-                onClick={this.toggleAdd}
-              >
-                ADD
-              </Button>
-            }
+            </Grid>
           </Box>
           <Popover
             anchorEl={this.state.anchorEl}
