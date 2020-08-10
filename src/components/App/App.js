@@ -81,6 +81,23 @@ const customTheme = createMuiTheme({
         boxShadow: '4px 5px 0 #014F56',
       },
     },
+    MuiCard: {
+      root: {
+        marginTop: '30px',
+        backgroundColor: '#FB9A34',
+        overflow: 'visible',
+      }
+    },
+    MuiCardHeader: {
+      root: {
+        margin: '-30px auto 0',
+        backgroundColor: '#4EA09E',
+        border: '2px solid #333333',
+        boxSizing: 'border-box',
+        width: '90%',
+        fontWeight: 'bold',
+      }
+    }
   },
 });
 
