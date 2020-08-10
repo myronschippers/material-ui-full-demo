@@ -11,12 +11,24 @@ import {
   Box,
   LinearProgress,
 } from '@material-ui/core';
+import {
+  withStyles,
+  createStyles,
+} from '@material-ui/core/styles';
 
 // CUSTOM COMPONENT
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
 import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
 import TypeEditor from '../../TypeEditor/TypeEditor';
+
+const muiStyles = (theme) => createStyles({
+  imgBlock: {
+    boxSizing: 'border-box',
+    border: `2px solid ${theme.palette.common.black}`,
+    backgroundColor: theme.palette.info.main,
+  },
+});
 
 class Edit extends Component {
   state = {
@@ -148,22 +160,22 @@ class Edit extends Component {
         <form onSubmit={this.handleSubmitEdit}>
           <Grid container spacing={3}>
             <Grid item xs={5}>
-              <Box mb={3}>
+              <Box mb={3} p={3} className={this.props.classes.imgBlock}>
                 {editableImgPath &&
                   <img
                     src={`images/${editableImgPath}`}
                     alt={creatureDetails.name}
                   />
                 }
+                <TextField
+                  label="Image File Name:"
+                  variant="outlined"
+                  fullWidth
+                  defaultValue={creatureDetails.img_path}
+                  onChange={this.handleChangeField('img_path')}
+                />
               </Box>
 
-              <TextField
-                label="Image File Name:"
-                variant="outlined"
-                fullWidth
-                defaultValue={creatureDetails.img_path}
-                onChange={this.handleChangeField('img_path')}
-              />
             </Grid>
 
             <Grid item xs={7}>
@@ -245,4 +257,6 @@ class Edit extends Component {
   }
 }
 
-export default connect(mapStoreToProps('creatureDetails'))(Edit);
+export default connect(mapStoreToProps('creatureDetails'))(
+  withStyles(muiStyles)(Edit)
+);
