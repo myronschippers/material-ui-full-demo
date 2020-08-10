@@ -8,16 +8,10 @@ import {
   ThemeProvider,
   createMuiTheme,
 } from '@material-ui/core/styles';
-import {
-  amber,
-  lightGreen,
-  deepOrange,
-  lime,
-  lightBlue,
-  green,
-} from '@material-ui/core/colors';
 
+//
 // Record Theme Colors
+// ------------------------------
 // drk teal - #014F56
 // lt teal - #4EA09E
 // amber - #FB9A34
@@ -31,12 +25,9 @@ import Home from '../pages/Home/Home';
 import Details from '../pages/Details/Details';
 import Edit from '../pages/Edit/Edit';
 
-const newLightGreen = lightGreen['A100'];
-
 const customTheme = createMuiTheme({
   // theme settings
   palette: {
-    // type: 'dark',
     primary: {
       main: '#FB9A34',
     },
@@ -46,10 +37,7 @@ const customTheme = createMuiTheme({
       // dark: '',
       // contrastText: '',
     },
-    // error: deepOrange,
-    // warning: lime,
     info: { main: '#FE7942' },
-    // success: green,
   },
   typography: {
     h1: { color: '#BF4904', fontWeight: 'bold' },
