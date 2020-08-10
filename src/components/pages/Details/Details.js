@@ -9,11 +9,23 @@ import {
   Typography,
   Box,
 } from '@material-ui/core';
+import {
+  withStyles,
+  createStyles,
+} from '@material-ui/core/styles';
 
 // CUSTOM COMPONENTS
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureAttributes from '../../CreatureAttributes/CreatureAttributes';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
+
+const muiStyles = (theme) => createStyles({
+  imgBlock: {
+    boxSizing: 'border-box',
+    border: `2px solid ${theme.palette.common.black}`,
+    backgroundColor: theme.palette.info.main,
+  },
+});
 
 class Details extends Component {
   componentDidMount() {
@@ -76,14 +88,14 @@ class Details extends Component {
         </Grid>
         <Grid container spacing={3}>
           <Grid item xs={5}>
-            <div>
+            <Box p={3} className={this.props.classes.imgBlock}>
               {creatureDetails.img_path &&
                 <img
                   src={`images/${creatureDetails.img_path}`}
                   alt={creatureDetails}
                 />
               }
-            </div>
+            </Box>
           </Grid>
 
           <Grid item xs={7}>
@@ -160,4 +172,6 @@ class Details extends Component {
   }
 }
 
-export default connect(mapStoreToProps('creatureDetails'))(Details);
+export default connect(mapStoreToProps('creatureDetails'))(
+  withStyles(muiStyles)(Details)
+);
