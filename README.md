@@ -37,17 +37,17 @@ This repository is meant to act as a demonstration of how to customize an applic
 
 **Branch Details:**
 1. `master`
-  - fully functional application with no material-ui
+    - fully functional application with no material-ui
 1. `develop`
-  - completely customized application leveraging material-ui, core behavior remains the same
+    - completely customized application leveraging material-ui, core behavior remains the same
 1. `feature-mui-setup`
-  - bringing in material-ui dependencies and using the available components
+    - bringing in material-ui dependencies and using the available components
 1. `feature-mui-theme`
-  - shows how to setup and configure material-ui theme settings
+    - shows how to setup and configure material-ui theme settings
 1. `feature-mui-overrides`
-  - demo of how to override core component properties/styling at a global level
+    - demo of how to override core component properties/styling at a global level
 1. `feature-mui-styles`
-  - demonstrates how to add custom styling to individual material-ui components
+    - demonstrates how to add custom styling to individual material-ui components
 
 
 ## Prerequisites
