@@ -2,10 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import {
+  Typography,
+  Paper,
+  Chip,
+  Box,
+  Button,
+  Popover,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+} from '@material-ui/core';
+
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
     newAttributeId: '',
+    anchorEl: null,
   }
 
   componentDidMount() {
@@ -45,12 +60,13 @@ class CreatureAttributes extends Component {
     });
   }
 
-  toggleAdd = () => {
+  toggleAdd = (event) => {
     console.log('Toggle Add');
     this.setState({
       isAdding: !this.state.isAdding,
       newAttributeId: !this.state.isAdding ? '' : this.state.newAttributeId,
-    })
+      anchorEl: this.state.isAdding ? null : event.currentTarget,
+    });
   }
 
   render() {
@@ -64,64 +80,100 @@ class CreatureAttributes extends Component {
     });
 
     return (
-      <div>
-        <h4>Attributes:</h4>
-        <ul className="blocks">
-          {attributes.map((item, index) => {
-            return (
-              <li key={index}>
-                {item}
-                {editable &&
-                  <button
-                    type="button"
-                    onClick={this.handleClickDeleteAttr(item)}
-                  >
-                    x
-                  </button>
-                }
-              </li>
-            );
-          })}
-          {editable && !this.state.isAdding &&
-            <li>
-              <button
+      <Paper>
+        <Box p={2}>
+          <Typography
+            variant="h6"
+            component="h4"
+            gutterBottom
+          >
+            Attributes:
+          </Typography>
+          <Box>
+            {attributes.map((item, index) => {
+              let chipProps = {
+                key: index,
+                label: item,
+              };
+
+              if (editable) {
+                chipProps.onDelete = this.handleClickDeleteAttr(item)
+              }
+
+              return (
+                <Chip
+                  {...chipProps}
+                />
+              );
+            })}
+            {editable &&
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
                 type="button"
                 onClick={this.toggleAdd}
               >
                 ADD
-              </button>
-            </li>
-          }
-        </ul>
-        {this.state.isAdding &&
-          <div>
-            <select
-              onChange={this.handleChangeSelection}
-            >
-              <option value="">Select an Attribute</option>
-              {selectableOptions.map((item, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={item.id}
+              </Button>
+            }
+          </Box>
+
+          <Popover
+            anchorEl={this.state.anchorEl}
+            onClose={this.toggleAdd}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={this.state.isAdding}
+          >
+            <Box p={1}>
+              <Box mb={2}>
+                <FormControl variant="outlined" fullWidth>
+                  <InputLabel id="attribute-select-label">
+                    Attribute:
+                  </InputLabel>
+                  <Select
+                    labelId="attribute-select-label"
+                    label="Attribute:"
+                    value={this.state.newAttributeId}
+                    onChange={this.handleChangeSelection}
                   >
-                    {item.tag}
-                  </option>
-                );
-              })}
-            </select>
-            <div>
-              <button
-                type="button"
-                className="btn"
-                onClick={this.handleClickAddAttribute}
-              >
-                Add Attribute
-              </button>
-            </div>
-          </div>
-        }
-      </div>
+                    <MenuItem value=""><em>Select an Attribute</em></MenuItem>
+                    {selectableOptions.map((item, index) => {
+                      return (
+                        <MenuItem
+                          key={index}
+                          value={item.id}
+                        >
+                          {item.tag}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Box>
+              <div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="button"
+                  size="small"
+                  onClick={this.handleClickAddAttribute}
+                >
+                  Add Attribute
+                </Button>
+              </div>
+            </Box>
+          </Popover>
+
+        </Box>
+      </Paper>
     );
   }
 }

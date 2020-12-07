@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import { Grid } from '@material-ui/core';
+
 // CUSTOM COMPONENTS
 import CreatureListItem from '../CreatureListItem/CreatureListItem';
 
@@ -15,19 +18,23 @@ class CreatureList extends Component {
   render() {
     return (
       <div className="stackBlock">
-        <ul className="blocks">
+        <Grid
+          container
+          spacing={3}
+          alignItems="flex-start"
+        >
           {this.props.store.creatureList.map((item, index) => {
             return (
-              <li key={index}>
+              <Grid item xs={4} key={index}>
                 <CreatureListItem
                   creature={item}
                   index={index}
                   {...this.props}
                 />
-              </li>
+              </Grid>
             );
           })}
-        </ul>
+        </Grid>
       </div>
     );
   }

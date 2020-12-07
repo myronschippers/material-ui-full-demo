@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import {
+  Button,
+  Grid,
+  Typography,
+  TextField,
+  Box,
+  LinearProgress,
+} from '@material-ui/core';
+
 // CUSTOM COMPONENT
 import AlertMessages from '../../AlertMessages/AlertMessages';
 import CreatureHabitats from '../../CreatureHabitats/CreatureHabitats';
@@ -98,6 +108,7 @@ class Edit extends Component {
     const {
       creatureDetails
     } = this.props.store;
+    const showFields = creatureDetails.id ? true : false;
 
     let editableImgPath = this.props.store.creatureDetails.img_path;
 
@@ -107,87 +118,126 @@ class Edit extends Component {
 
     return (
       <div>
-        <div>
-          <h2>Edit Creature Details</h2>
-          <button
-            type="button"
-            className="btn"
-            onClick={this.handleClickToBack}
-          >
-            BACK TO DETAILS
-          </button>
-        </div>
-        <form onSubmit={this.handleSubmitEdit}>
-          <label className="vr vr_x2">
-            <div>Name:</div>
-            <input
-              type="text"
-              placeholder="Creature Name"
-              defaultValue={creatureDetails.name}
-              onChange={this.handleChangeField('name')}
-            />
-          </label>
-          <TypeEditor
-            typeId={creatureDetails.type_id}
-            changeCallback={this.changeType}
-          />
-          <div className="vr">
-            {editableImgPath &&
-              <img
-                src={`images/${editableImgPath}`}
-                alt={creatureDetails.name}
-              />
-            }
-          </div>
-          <label className="vr vr_x2">
-            <div>Image File Name:</div>
-            <input
-              type="text"
-              placeholder="Enter File Name:"
-              defaultValue={creatureDetails.img_path}
-              onChange={this.handleChangeField('img_path')}
-            />
-          </label>
-          <label className="vr vr_x2">
-            <div>Physical Description:</div>
-            <textarea
-              placeholder="What does the creature look like?"
-              defaultValue={creatureDetails.physical_description}
-              onChange={this.handleChangeField('physical_description')}
-            ></textarea>
-          </label>
-          <label className="vr vr_x2">
-            <div>Background:</div>
-            <textarea
-              placeholder="What does the creature look like?"
-              defaultValue={creatureDetails.background}
-              onChange={this.handleChangeField('background')}
-            ></textarea>
-          </label>
-
-          <div className="vr vr_x2">
-            <CreatureAttributes
-              editable
-              attributes={creatureDetails.attributes}
-            />
-          </div>
-
-          <div className="vr vr_x2">
-            <CreatureHabitats
-              editable
-              habitats={creatureDetails.habitats}
-            />
-          </div>
-
-          <div>
-            <button
-              className="btn"
-              disabled={!this.state.hasEdited}
+        <Grid
+          container
+          alignItems="center"
+          justify="space-between"
+        >
+          <Grid item>
+            <Typography
+              variant="h4"
+              component="h2"
+              gutterBottom
             >
-              SAVE CHANGES
-            </button>
-          </div>
+              Edit Creature Details
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={this.handleClickToBack}
+            >
+              BACK TO DETAILS
+            </Button>
+          </Grid>
+        </Grid>
+        {!showFields && <LinearProgress />}
+        {showFields &&
+        <form onSubmit={this.handleSubmitEdit}>
+          <Grid container spacing={3}>
+            <Grid item xs={5}>
+              <Box mb={3}>
+                {editableImgPath &&
+                  <img
+                    src={`images/${editableImgPath}`}
+                    alt={creatureDetails.name}
+                  />
+                }
+              </Box>
+
+              <TextField
+                label="Image File Name:"
+                variant="outlined"
+                fullWidth
+                defaultValue={creatureDetails.img_path}
+                onChange={this.handleChangeField('img_path')}
+              />
+            </Grid>
+
+            <Grid item xs={7}>
+              <Box mb={3}>
+                <TextField
+                  label="Name:"
+                  variant="outlined"
+                  fullWidth
+                  defaultValue={creatureDetails.name}
+                  onChange={this.handleChangeField('name')}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TypeEditor
+                  typeId={creatureDetails.type_id}
+                  changeCallback={this.changeType}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TextField
+                  label="Physical Description:"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={10}
+                  defaultValue={creatureDetails.physical_description}
+                  onChange={this.handleChangeField('physical_description')}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <TextField
+                  label="Background:"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={10}
+                  defaultValue={creatureDetails.background}
+                  onChange={this.handleChangeField('background')}
+                />
+              </Box>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Box mb={3}>
+                <CreatureAttributes
+                  editable
+                  attributes={creatureDetails.attributes}
+                />
+              </Box>
+
+              <Box mb={3}>
+                <CreatureHabitats
+                  editable
+                  habitats={creatureDetails.habitats}
+                />
+              </Box>
+
+              <div>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={!this.state.hasEdited}
+                >
+                  SAVE CHANGES
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
         </form>
+        }
 
         <AlertMessages />
       </div>

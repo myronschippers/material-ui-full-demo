@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// MATERIAL-UI
+import {
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+} from '@material-ui/core';
+
 class TypeEditor extends Component {
   state = {
     selectedType: '',
@@ -52,32 +60,41 @@ class TypeEditor extends Component {
     const definedType = this.matchTypeById(this.props.typeId);
 
     return (
-      <label className="vr vr_x2">
-        <div>Type:</div>
+      <div>
         {definedType != null && !this.state.isSelecting &&
           <div onClick={this.handleClickToSelect}>
-            {definedType.label}
+            <div>Type:</div>
+            <div>
+              {definedType.label}
+            </div>
           </div>
         }
         {this.state.isSelecting &&
-          <select
-            value={this.state.selectedType}
-            onChange={this.handleChangeTypeSelection}
-          >
-            <option type="">Select a Type</option>
-            {this.props.store.allTypes.map((item, index) => {
-              return (
-                <option
-                  key={index}
-                  value={item.id}
-                >
-                  {item.label}
-                </option>
-              );
-            })}
-          </select>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel id="type-select-label">
+              Type:
+            </InputLabel>
+            <Select
+              labelId="type-select-label"
+              label="Type:"
+              value={this.state.selectedType}
+              onChange={this.handleChangeTypeSelection}
+            >
+              <MenuItem value=""><em>Select a Type</em></MenuItem>
+              {this.props.store.allTypes.map((item, index) => {
+                return (
+                  <MenuItem
+                    key={index}
+                    value={item.id}
+                  >
+                    {item.label}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
         }
-      </label>
+      </div>
     );
   }
 }
