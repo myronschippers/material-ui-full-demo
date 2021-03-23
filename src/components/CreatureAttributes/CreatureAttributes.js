@@ -16,24 +16,22 @@ import {
   MenuItem,
   Grid,
 } from '@material-ui/core';
-import {
-  withStyles,
-  createStyles,
-} from '@material-ui/core/styles';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 
-const muiStyles = (theme) => createStyles({
-  blockHdg: {
-    color: theme.palette.primary.main,
-    textShadow: `0 2px 1px ${theme.palette.common.black}`,
-  }
-});
+const muiStyles = (theme) =>
+  createStyles({
+    blockHdg: {
+      color: theme.palette.primary.main,
+      textShadow: `0 2px 1px ${theme.palette.common.black}`,
+    },
+  });
 
 class CreatureAttributes extends Component {
   state = {
     isAdding: false,
     newAttributeId: '',
     anchorEl: null,
-  }
+  };
 
   componentDidMount() {
     this.props.dispatch({ type: 'GET_ALL_ATTRIBUTES' });
@@ -47,11 +45,13 @@ class CreatureAttributes extends Component {
         creatureId: this.props.store.creatureDetails.id,
       },
     });
-  }
+  };
 
   matchAvailableAttributes(attributeTag) {
     const allAttributes = this.props.store.allAttributes;
-    const matchedAttributes = allAttributes.filter(item => attributeTag === item.tag);
+    const matchedAttributes = allAttributes.filter(
+      (item) => attributeTag === item.tag
+    );
     return matchedAttributes[0];
   }
 
@@ -60,17 +60,17 @@ class CreatureAttributes extends Component {
       type: 'SAVE_CREATURE_ATTRIBUTE',
       payload: {
         attributeId: this.state.newAttributeId,
-        creatureId: this.props.store.creatureDetails.id
-      }
+        creatureId: this.props.store.creatureDetails.id,
+      },
     });
     this.toggleAdd();
-  }
+  };
 
   handleChangeSelection = (event) => {
     this.setState({
-      newAttributeId: parseInt(event.target.value)
+      newAttributeId: parseInt(event.target.value),
     });
-  }
+  };
 
   toggleAdd = (event) => {
     console.log('Toggle Add');
@@ -79,17 +79,18 @@ class CreatureAttributes extends Component {
       newAttributeId: !this.state.isAdding ? '' : this.state.newAttributeId,
       anchorEl: this.state.isAdding ? null : event.currentTarget,
     });
-  }
+  };
 
   render() {
-    const {
-      attributes,
-      editable,
-    } = this.props;
-    const selectableOptions = this.props.store.allAttributes.filter((attrOpt, index) => {
-      let matchWithSaved = attributes.filter(attrSaved => attrOpt.tag === attrSaved);
-      return matchWithSaved.length === 0;
-    });
+    const { attributes, editable } = this.props;
+    const selectableOptions = this.props.store.allAttributes.filter(
+      (attrOpt, index) => {
+        let matchWithSaved = attributes.filter(
+          (attrSaved) => attrOpt.tag === attrSaved
+        );
+        return matchWithSaved.length === 0;
+      }
+    );
 
     return (
       <Paper>
@@ -111,18 +112,16 @@ class CreatureAttributes extends Component {
                 };
 
                 if (editable) {
-                  chipProps.onDelete = this.handleClickDeleteAttr(item)
+                  chipProps.onDelete = this.handleClickDeleteAttr(item);
                 }
 
                 return (
                   <Grid item key={index}>
-                    <Chip
-                      {...chipProps}
-                    />
+                    <Chip {...chipProps} />
                   </Grid>
                 );
               })}
-              {editable &&
+              {editable && (
                 <Grid item>
                   <Button
                     variant="contained"
@@ -134,7 +133,7 @@ class CreatureAttributes extends Component {
                     ADD
                   </Button>
                 </Grid>
-              }
+              )}
             </Grid>
           </Box>
 
@@ -163,13 +162,12 @@ class CreatureAttributes extends Component {
                     value={this.state.newAttributeId}
                     onChange={this.handleChangeSelection}
                   >
-                    <MenuItem value=""><em>Select an Attribute</em></MenuItem>
+                    <MenuItem value="">
+                      <em>Select an Attribute</em>
+                    </MenuItem>
                     {selectableOptions.map((item, index) => {
                       return (
-                        <MenuItem
-                          key={index}
-                          value={item.id}
-                        >
+                        <MenuItem key={index} value={item.id}>
                           {item.tag}
                         </MenuItem>
                       );
@@ -190,7 +188,6 @@ class CreatureAttributes extends Component {
               </div>
             </Box>
           </Popover>
-
         </Box>
       </Paper>
     );

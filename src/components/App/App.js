@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 // MATERIAL-UI
-import {
-  ThemeProvider,
-  createMuiTheme,
-} from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //
 // Record Theme Colors
@@ -60,8 +57,8 @@ const customTheme = createMuiTheme({
         boxShadow: '3px 3px 0 #014F56',
         '&:hover': {
           boxShadow: '1px 1px 0 #014F56',
-        }
-      }
+        },
+      },
     },
     MuiPaper: {
       root: {
@@ -86,7 +83,7 @@ const customTheme = createMuiTheme({
         marginTop: '30px',
         backgroundColor: '#FB9A34',
         overflow: 'visible',
-      }
+      },
     },
     MuiCardHeader: {
       root: {
@@ -96,7 +93,7 @@ const customTheme = createMuiTheme({
         boxSizing: 'border-box',
         width: '90%',
         fontWeight: 'bold',
-      }
+      },
     },
     MuiOutlinedInput: {
       root: {
@@ -105,7 +102,15 @@ const customTheme = createMuiTheme({
       notchedOutline: {
         borderColor: '#333333',
       },
-    }
+    },
+    // .MuiChip-deletableColorSecondary:hover
+    MuiChip: {
+      deleteIconColorSecondary: {
+        '&:hover': {
+          color: '#FB9A34',
+        },
+      },
+    },
   },
 });
 
@@ -128,6 +133,6 @@ class App extends React.Component {
 const mapStoreToProps = (store) => {
   return {
     secondReducer: store.secondReducer,
-  }
+  };
 };
 export default connect(mapStoreToProps)(App);
