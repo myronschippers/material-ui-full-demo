@@ -103,7 +103,7 @@ const customTheme = createMuiTheme({
         borderColor: '#333333',
       },
     },
-    // .MuiChip-deletableColorSecondary:hover
+    // .MuiChip-deleteIconColorSecondary:hover
     MuiChip: {
       deleteIconColorSecondary: {
         '&:hover': {
